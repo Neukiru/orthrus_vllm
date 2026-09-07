@@ -9,9 +9,9 @@
 vllm/
 
 # --- third-party material, not ours to redistribute ---
-# ref_peek/ holds files copied from the chiennv/Orthrus-Qwen3-1.7B checkpoint.
-# Recreate with:  hf download chiennv/Orthrus-Qwen3-1.7B --include "*.json" "*.py"
-ref_peek/
+# ref_peek/ IS tracked: those files are CC-BY-4.0 / Apache-2.0, redistributable
+# with attribution, which ref_peek/README.md provides. Model weights are not.
+*.safetensors
 # The Orthrus paper (arXiv:2605.12825) and the implementation guide.
 orthrus.pdf
 orthrus_vllm_guide.pdf

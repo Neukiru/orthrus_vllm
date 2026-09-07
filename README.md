@@ -67,6 +67,10 @@ notebooks/
                                  `- num_rejected` bug reproduced on purpose
   build_notebook.py              generator (the notebook is generated, not hand-edited)
 
+ref_peek/       unmodified copies of the Orthrus checkpoint's configs and modeling
+                code (CC-BY-4.0, attributed in ref_peek/README.md) so the analysis
+                elsewhere can cite exact line numbers. No weights.
+
 Orthrus_Field_Manual.pdf   23-page study guide; source in study_guide.html
 ```
 
@@ -126,5 +130,9 @@ the output stays perfect.
 ## License
 
 Benchmark and study material in this repository: Apache-2.0, matching vLLM.
-The Orthrus checkpoints, the Orthrus paper, and the vLLM source are the property of their
-respective authors and are not redistributed here.
+
+`ref_peek/` contains unmodified third-party files redistributed under their own terms —
+the Orthrus checkpoint's configs and modeling code (CC-BY-4.0) and Qwen3's config
+(Apache-2.0). Attribution and SHA-256 checksums are in
+[`ref_peek/README.md`](ref_peek/README.md). Model weights, the Orthrus paper, and the vLLM
+source are not redistributed here.
