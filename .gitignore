@@ -1,0 +1,29 @@
+# --- environments (10.7 GB) ---
+.venv/
+.venv-ref/
+
+# --- the vLLM fork ---
+# Lives in its own repository: https://github.com/Neukiru/vllm (branch `orthrus`).
+# Keeping it out of this repo means the changes we intend to upstream stay in a
+# clean fork of vllm-project/vllm, with history a maintainer can actually review.
+vllm/
+
+# --- third-party material, not ours to redistribute ---
+# ref_peek/ holds files copied from the chiennv/Orthrus-Qwen3-1.7B checkpoint.
+# Recreate with:  hf download chiennv/Orthrus-Qwen3-1.7B --include "*.json" "*.py"
+ref_peek/
+# The Orthrus paper (arXiv:2605.12825) and the implementation guide.
+orthrus.pdf
+orthrus_vllm_guide.pdf
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- scratch ---
+_shot.png
+*.log
+
+# --- machine-local tool config ---
+.claude/settings.local.json

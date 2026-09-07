@@ -1,0 +1,416 @@
+{
+  "config": {
+    "max_new_tokens": 256,
+    "attn": "sdpa",
+    "out": "bench/results_eager.json"
+  },
+  "results": {
+    "qwen3-ar": {
+      "model_id": "Qwen/Qwen3-1.7B",
+      "rows": [
+        {
+          "category": "math",
+          "prompt": "Compute 17 * 24 and show each step of the multiplication.",
+          "prompt_tokens": 28,
+          "gen_tokens": 167,
+          "seconds": 2.573992621000798,
+          "tok_per_s": 64.8797508732051
+        },
+        {
+          "category": "math",
+          "prompt": "Solve for x: 3x + 7 = 25. Show your working.",
+          "prompt_tokens": 32,
+          "gen_tokens": 131,
+          "seconds": 1.9552202330014552,
+          "tok_per_s": 67.00012499303064
+        },
+        {
+          "category": "math",
+          "prompt": "What is the sum of the first 20 positive integers? Explain the formula.",
+          "prompt_tokens": 29,
+          "gen_tokens": 256,
+          "seconds": 3.814857117999054,
+          "tok_per_s": 67.10605196513247
+        },
+        {
+          "category": "math",
+          "prompt": "A train travels 240 km in 3 hours. What is its average speed in m/s?",
+          "prompt_tokens": 34,
+          "gen_tokens": 256,
+          "seconds": 4.023810781000066,
+          "tok_per_s": 63.6212818974491
+        },
+        {
+          "category": "code",
+          "prompt": "Write a Python function that returns the n-th Fibonacci number iteratively.",
+          "prompt_tokens": 26,
+          "gen_tokens": 256,
+          "seconds": 3.7906803119985852,
+          "tok_per_s": 67.53405165550018
+        },
+        {
+          "category": "code",
+          "prompt": "Write a Python function to reverse a linked list. Include the Node class.",
+          "prompt_tokens": 27,
+          "gen_tokens": 256,
+          "seconds": 3.8112346720008645,
+          "tok_per_s": 67.16983393352744
+        },
+        {
+          "category": "code",
+          "prompt": "Write a bash one-liner that finds the 10 largest files under the current directory.",
+          "prompt_tokens": 31,
+          "gen_tokens": 163,
+          "seconds": 2.7649578350028605,
+          "tok_per_s": 58.95207439929418
+        },
+        {
+          "category": "code",
+          "prompt": "Implement binary search in Python with a docstring and type hints.",
+          "prompt_tokens": 25,
+          "gen_tokens": 256,
+          "seconds": 4.039484970002377,
+          "tok_per_s": 63.37441577356565
+        },
+        {
+          "category": "prose",
+          "prompt": "Explain what a KV cache is in a transformer, in two short paragraphs.",
+          "prompt_tokens": 28,
+          "gen_tokens": 137,
+          "seconds": 2.071563106001122,
+          "tok_per_s": 66.13363580531242
+        },
+        {
+          "category": "prose",
+          "prompt": "Describe the difference between a process and a thread.",
+          "prompt_tokens": 22,
+          "gen_tokens": 256,
+          "seconds": 3.8394010589981917,
+          "tok_per_s": 66.67706657006487
+        },
+        {
+          "category": "prose",
+          "prompt": "Give three reasons why someone might prefer a bicycle to a car in a city.",
+          "prompt_tokens": 28,
+          "gen_tokens": 97,
+          "seconds": 1.4743635170016205,
+          "tok_per_s": 65.79110163907656
+        },
+        {
+          "category": "prose",
+          "prompt": "Summarise what makes GPU memory bandwidth a bottleneck during LLM decoding.",
+          "prompt_tokens": 27,
+          "gen_tokens": 256,
+          "seconds": 4.282968534993415,
+          "tok_per_s": 59.77162753085544
+        }
+      ],
+      "total_gen_tokens": 2487,
+      "total_seconds": 38.44253475900041,
+      "aggregate_tok_per_s": 64.69396504656156,
+      "mean_tok_per_s": 64.83425141966784
+    },
+    "orthrus-ar": {
+      "model_id": "chiennv/Orthrus-Qwen3-1.7B",
+      "rows": [
+        {
+          "category": "math",
+          "prompt": "Compute 17 * 24 and show each step of the multiplication.",
+          "prompt_tokens": 28,
+          "gen_tokens": 167,
+          "seconds": 2.4706237130012596,
+          "tok_per_s": 67.5942674399138
+        },
+        {
+          "category": "math",
+          "prompt": "Solve for x: 3x + 7 = 25. Show your working.",
+          "prompt_tokens": 32,
+          "gen_tokens": 131,
+          "seconds": 1.8677712950011482,
+          "tok_per_s": 70.13706675469571
+        },
+        {
+          "category": "math",
+          "prompt": "What is the sum of the first 20 positive integers? Explain the formula.",
+          "prompt_tokens": 29,
+          "gen_tokens": 256,
+          "seconds": 3.5893710649979766,
+          "tok_per_s": 71.32168710457476
+        },
+        {
+          "category": "math",
+          "prompt": "A train travels 240 km in 3 hours. What is its average speed in m/s?",
+          "prompt_tokens": 34,
+          "gen_tokens": 256,
+          "seconds": 3.5019789780053543,
+          "tok_per_s": 73.10152391200579
+        },
+        {
+          "category": "code",
+          "prompt": "Write a Python function that returns the n-th Fibonacci number iteratively.",
+          "prompt_tokens": 26,
+          "gen_tokens": 256,
+          "seconds": 3.852176099004282,
+          "tok_per_s": 66.45594423011227
+        },
+        {
+          "category": "code",
+          "prompt": "Write a Python function to reverse a linked list. Include the Node class.",
+          "prompt_tokens": 27,
+          "gen_tokens": 256,
+          "seconds": 3.6773447380037396,
+          "tok_per_s": 69.6154476229418
+        },
+        {
+          "category": "code",
+          "prompt": "Write a bash one-liner that finds the 10 largest files under the current directory.",
+          "prompt_tokens": 31,
+          "gen_tokens": 163,
+          "seconds": 2.388382074997935,
+          "tok_per_s": 68.2470370659355
+        },
+        {
+          "category": "code",
+          "prompt": "Implement binary search in Python with a docstring and type hints.",
+          "prompt_tokens": 25,
+          "gen_tokens": 256,
+          "seconds": 3.652844035997987,
+          "tok_per_s": 70.08237895655425
+        },
+        {
+          "category": "prose",
+          "prompt": "Explain what a KV cache is in a transformer, in two short paragraphs.",
+          "prompt_tokens": 28,
+          "gen_tokens": 137,
+          "seconds": 1.9664013479996356,
+          "tok_per_s": 69.67041603148117
+        },
+        {
+          "category": "prose",
+          "prompt": "Describe the difference between a process and a thread.",
+          "prompt_tokens": 22,
+          "gen_tokens": 256,
+          "seconds": 3.4923623190043145,
+          "tok_per_s": 73.3028181546142
+        },
+        {
+          "category": "prose",
+          "prompt": "Give three reasons why someone might prefer a bicycle to a car in a city.",
+          "prompt_tokens": 28,
+          "gen_tokens": 97,
+          "seconds": 1.321774654003093,
+          "tok_per_s": 73.38618553943994
+        },
+        {
+          "category": "prose",
+          "prompt": "Summarise what makes GPU memory bandwidth a bottleneck during LLM decoding.",
+          "prompt_tokens": 27,
+          "gen_tokens": 256,
+          "seconds": 3.451910219002457,
+          "tok_per_s": 74.16183613083066
+        }
+      ],
+      "total_gen_tokens": 2487,
+      "total_seconds": 35.23294053901918,
+      "aggregate_tok_per_s": 70.58735268620964,
+      "mean_tok_per_s": 70.589717411925
+    },
+    "orthrus-diff": {
+      "model_id": "chiennv/Orthrus-Qwen3-1.7B",
+      "rows": [
+        {
+          "category": "math",
+          "prompt": "Compute 17 * 24 and show each step of the multiplication.",
+          "prompt_tokens": 28,
+          "gen_tokens": 167,
+          "seconds": 0.4911325510038296,
+          "tok_per_s": 340.0304045387898,
+          "diffusion_passes": 15,
+          "ar_passes": 16,
+          "tokens_per_cycle": 11.133333333333333
+        },
+        {
+          "category": "math",
+          "prompt": "Solve for x: 3x + 7 = 25. Show your working.",
+          "prompt_tokens": 32,
+          "gen_tokens": 131,
+          "seconds": 0.32510564100084594,
+          "tok_per_s": 402.9459458061484,
+          "diffusion_passes": 10,
+          "ar_passes": 11,
+          "tokens_per_cycle": 13.1
+        },
+        {
+          "category": "math",
+          "prompt": "What is the sum of the first 20 positive integers? Explain the formula.",
+          "prompt_tokens": 29,
+          "gen_tokens": 256,
+          "seconds": 0.7324590010030079,
+          "tok_per_s": 349.50761701261246,
+          "diffusion_passes": 24,
+          "ar_passes": 25,
+          "tokens_per_cycle": 10.666666666666666
+        },
+        {
+          "category": "math",
+          "prompt": "A train travels 240 km in 3 hours. What is its average speed in m/s?",
+          "prompt_tokens": 34,
+          "gen_tokens": 256,
+          "seconds": 0.8008109200018225,
+          "tok_per_s": 319.6759604619495,
+          "diffusion_passes": 25,
+          "ar_passes": 26,
+          "tokens_per_cycle": 10.24
+        },
+        {
+          "category": "code",
+          "prompt": "Write a Python function that returns the n-th Fibonacci number iteratively.",
+          "prompt_tokens": 26,
+          "gen_tokens": 256,
+          "seconds": 1.2493913380021695,
+          "tok_per_s": 204.8997717635493,
+          "diffusion_passes": 40,
+          "ar_passes": 41,
+          "tokens_per_cycle": 6.4
+        },
+        {
+          "category": "code",
+          "prompt": "Write a Python function to reverse a linked list. Include the Node class.",
+          "prompt_tokens": 27,
+          "gen_tokens": 256,
+          "seconds": 1.1214089280038024,
+          "tok_per_s": 228.28425350215508,
+          "diffusion_passes": 34,
+          "ar_passes": 35,
+          "tokens_per_cycle": 7.529411764705882
+        },
+        {
+          "category": "code",
+          "prompt": "Write a bash one-liner that finds the 10 largest files under the current directory.",
+          "prompt_tokens": 31,
+          "gen_tokens": 185,
+          "seconds": 1.5201268999953754,
+          "tok_per_s": 121.70036593692461,
+          "diffusion_passes": 46,
+          "ar_passes": 47,
+          "tokens_per_cycle": 4.021739130434782
+        },
+        {
+          "category": "code",
+          "prompt": "Implement binary search in Python with a docstring and type hints.",
+          "prompt_tokens": 25,
+          "gen_tokens": 256,
+          "seconds": 1.9529085089961882,
+          "tok_per_s": 131.08653007589496,
+          "diffusion_passes": 52,
+          "ar_passes": 53,
+          "tokens_per_cycle": 4.923076923076923
+        },
+        {
+          "category": "prose",
+          "prompt": "Explain what a KV cache is in a transformer, in two short paragraphs.",
+          "prompt_tokens": 28,
+          "gen_tokens": 83,
+          "seconds": 1.2293765599970357,
+          "tok_per_s": 67.51389501049226,
+          "diffusion_passes": 35,
+          "ar_passes": 36,
+          "tokens_per_cycle": 2.3714285714285714
+        },
+        {
+          "category": "prose",
+          "prompt": "Describe the difference between a process and a thread.",
+          "prompt_tokens": 22,
+          "gen_tokens": 256,
+          "seconds": 2.4805250270001125,
+          "tok_per_s": 103.20395771600026,
+          "diffusion_passes": 76,
+          "ar_passes": 77,
+          "tokens_per_cycle": 3.3684210526315788
+        },
+        {
+          "category": "prose",
+          "prompt": "Give three reasons why someone might prefer a bicycle to a car in a city.",
+          "prompt_tokens": 28,
+          "gen_tokens": 97,
+          "seconds": 1.2711301349991118,
+          "tok_per_s": 76.31004672866779,
+          "diffusion_passes": 34,
+          "ar_passes": 35,
+          "tokens_per_cycle": 2.8529411764705883
+        },
+        {
+          "category": "prose",
+          "prompt": "Summarise what makes GPU memory bandwidth a bottleneck during LLM decoding.",
+          "prompt_tokens": 27,
+          "gen_tokens": 256,
+          "seconds": 3.2421469319961034,
+          "tok_per_s": 78.96002413511458,
+          "diffusion_passes": 93,
+          "ar_passes": 94,
+          "tokens_per_cycle": 2.752688172043011
+        }
+      ],
+      "total_gen_tokens": 2455,
+      "total_seconds": 16.416522441999405,
+      "aggregate_tok_per_s": 149.54446099493165,
+      "mean_tok_per_s": 202.0098977240249,
+      "total_cycles": 484,
+      "mean_tokens_per_cycle": 5.072314049586777
+    }
+  },
+  "invariants": {
+    "I1  qwen3-ar == orthrus-ar   (AR view is the frozen base)": {
+      "matched": 12,
+      "total": 12
+    },
+    "I2  orthrus-ar == orthrus-diff (spec decoding is lossless)": {
+      "matched": 7,
+      "total": 12
+    }
+  },
+  "texts": {
+    "qwen3-ar": [
+      "We are asked to compute:\n\n$$\n17 \\times 24\n$$\n\n---\n\n### Step 1: Break down the multiplication\n\nWe can use the distributive property to make the multiplication easier:\n\n$$\n17 \\times 24 = 17 \\times (20 + 4) = (17 \\times 20) + (17 \\times 4)\n$$\n\n---\n\n### Step 2: Compute each part\n\n- $17 \\times 20 = 340$\n- $17 \\times 4 = 68$\n\n---\n\n### Step 3: Add the results\n\n$$\n340 + 68 = 408\n$$\n\n---\n\n### \u2705 Final Answer:\n\n$$\n\\boxed{408}\n$$",
+      "We are given the equation:\n\n$$\n3x + 7 = 25\n$$\n\n### Step 1: Subtract 7 from both sides to isolate the term with $ x $\n\n$$\n3x + 7 - 7 = 25 - 7\n$$\n\n$$\n3x = 18\n$$\n\n### Step 2: Divide both sides by 3 to solve for $ x $\n\n$$\n\\frac{3x}{3} = \\frac{18}{3}\n$$\n\n$$\nx = 6\n$$\n\n### \u2705 Final Answer:\n$$\n\\boxed{6}\n$$",
+      "To find the **sum of the first 20 positive integers**, we can use the **arithmetic series formula**:\n\n$$\nS_n = \\frac{n}{2} \\times (a_1 + a_n)\n$$\n\nWhere:\n- $ S_n $ is the sum of the first $ n $ terms,\n- $ n $ is the number of terms,\n- $ a_1 $ is the first term,\n- $ a_n $ is the last term.\n\n---\n\n### Step 1: Identify the values\n- $ n = 20 $ (first 20 positive integers),\n- $ a_1 = 1 $ (first term),\n- $ a_{20} = 20 $ (20th term).\n\n---\n\n### Step 2: Plug into the formula\n\n$$\nS_{20} = \\frac{20}{2} \\times (1 + 20) = 10 \\times 21 = 210\n$$\n\n---\n\n### \u2705 Final Answer:\n$$\n\\boxed{210}\n$$\n\n---\n\n### \ud83e\udde0 Explanation of the Formula:\nThe formula $ S_n = \\frac{n}{2} \\times (a_1 + a_n",
+      "To find the **average speed** in **meters per second (m/s)**, follow these steps:\n\n---\n\n### **Step 1: Convert the distance from km to meters**\n\n$$\n240 \\text{ km} = 240 \\times 1000 = 240,000 \\text{ meters}\n$$\n\n---\n\n### **Step 2: Convert the time from hours to seconds**\n\n$$\n3 \\text{ hours} = 3 \\times 3600 = 10,800 \\text{ seconds}\n$$\n\n---\n\n### **Step 3: Use the formula for average speed**\n\n$$\n\\text{Average speed} = \\frac{\\text{Distance}}{\\text{Time}} = \\frac{240,000 \\text{ m}}{10,800 \\text{ s}}\n$$\n\n$$\n\\text{Average speed} = \\frac{240,000}{10,800} \\approx 22.22 \\text{ m/s}\n$$\n\n---\n\n### \u2705 **Final Answer:**\n\n$$\n\\boxed{22.22} \\text{ m/s",
+      "Sure! Here's a Python function that returns the **n-th Fibonacci number iteratively**:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0  # 0th Fibonacci number is 0\n    elif n == 1:\n        return 1  # 1st Fibonacci number is 1\n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n\n    return b\n```\n\n### Explanation:\n- `n` is the index of the Fibonacci number you want.\n- If `n` is 0, return 0 (the 0th Fibonacci number).\n- If `n` is 1, return 1 (the 1st Fibonacci number).\n- For `n >= 2`, we use an iterative approach to compute the Fibonacci numbers up to `n` using two variables `a` and `b`, which represent the previous two numbers in the sequence.\n\n### Example usage:\n\n```python\nprint(fibonacci(0))  # Output: 0\nprint(fibonacci(1))  # Output: 1\nprint(fibonacci(2))  # Output",
+      "Here's a Python function to reverse a linked list, including the `Node` class:\n\n### \u2705 **Node Class**\n```python\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n```\n\n### \u2705 **Reverse a Linked List Function**\n```python\ndef reverse_linked_list(head):\n    prev = None\n    current = head\n\n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n\n    return prev\n```\n\n### \u2705 **Example Usage**\n```python\n# Create a sample linked list\na = Node(1)\nb = Node(2)\nc = Node(3)\n\na.next = b\nb.next = c\n\n# Reverse the linked list\nreversed_head = reverse_linked_list(a)\n\n# Print the reversed list\ncurrent = reversed_head\nwhile current:\n    print(current.data, end=\" -> \")\n    current = current.next\nprint(\"None\")\n```\n\n### \u2705 **Output**\n```\n3 -> 2 -> 1 -> None\n```\n\n### \ud83d\udccc Notes:\n- The `reverse_linked_list` function modifies the `next` pointers of the nodes.\n",
+      "You can use the following bash one-liner to find the 10 largest files under the current directory:\n\n```bash\nfind . -type f -exec du -ch {} + | sort -hr | head -n 10\n```\n\n### Explanation:\n- `find . -type f` finds all regular files in the current directory and its subdirectories.\n- `-exec du -ch {} +` executes `du` on each file, showing human-readable disk usage (size and name).\n- `sort -hr` sorts the output by size in descending order (h for human-readable, r for reverse).\n- `head -n 10` outputs the first 10 lines, which are the largest files.\n\nThis will list the 10 largest files along with their sizes.",
+      "Here's a Python implementation of **binary search** with a **docstring** and **type hints**:\n\n```python\nfrom typing import List, Tuple\n\n\ndef binary_search(\n    sorted_list: List[int],  # List of sorted integers\n    target: int  # The value to search for\n) -> Tuple[int, int]:\n    \"\"\"\n    Perform binary search on a sorted list to find the index of the target.\n\n    Args:\n        sorted_list: A list of sorted integers.\n        target: The integer to search for.\n\n    Returns:\n        A tuple (index, found) where:\n        - index: The index of the target in the list if found.\n        - found: A boolean indicating whether the target was found.\n\n    Example:\n        >>> binary_search([1, 3, 5, 7, 9], 3)\n        (1, True)\n        >>> binary_search([1, 3, 5, 7, 9], 10)\n        (4, False)\n    \"\"\"\n    left: int = 0\n    right: int = len(sorted_list) - 1\n\n    while left <= right:\n        mid: int = (left + right) // 2\n\n        if sorted",
+      "A KV cache in a transformer refers to the cache of key (K) and value (V) vectors used in the attention mechanism. These vectors are stored during the computation of attention weights and are reused in subsequent steps to improve efficiency and reduce computation time. By reusing the cached K and V vectors, the model avoids recalculating them each time, which saves memory and speeds up the process.\n\nThe KV cache is crucial for maintaining performance in large-scale transformer models, as it allows the model to efficiently compute attention between different tokens without redundant calculations. This mechanism is particularly important in models like BERT, GPT, and others, where attention is a core component of the architecture.",
+      "Certainly! Here's a clear and concise description of the difference between a **process** and a **thread**:\n\n---\n\n### **Process (Process)**\n\n- **Definition**: A **process** is an **instance of a program in execution**. It is the **basic unit of execution** in an operating system.\n- **Key Characteristics**:\n  - A process has a **program counter**, **stack**, **registers**, and **memory**.\n  - It has **own resources** (like files, memory, and CPU time).\n  - It is **created by the operating system** and **terminated** when it completes or crashes.\n  - It can **create other processes** (through **fork** or **exec** system calls).\n  - It is **not the same as a thread**; it is the **larger unit** of execution.\n\n---\n\n### **Thread (Thread)**\n\n- **Definition**: A **thread** is a **lightweight unit of execution** within a process. It is **a part of a process**.\n- **Key Characteristics**:\n  - Threads share **the same memory space** as the process, which allows for **shared data** and **fast communication**.\n  - They **do not have their own",
+      "1. **Environmental Friendliness**: Bicycles produce no emissions and are a sustainable mode of transportation, helping reduce air pollution and greenhouse gas emissions in cities.\n\n2. **Cost-Effective**: Bicycles are much cheaper to purchase and maintain compared to cars, saving money on fuel, insurance, parking, and maintenance.\n\n3. **Health Benefits**: Cycling promotes physical activity, which can improve fitness, reduce the risk of chronic diseases, and enhance mental well-being in urban environments.",
+      "GPU memory bandwidth becomes a bottleneck during LLM (Large Language Model) decoding for several key reasons:\n\n1. **High Memory Demand**: Decoding processes require large amounts of memory to store intermediate outputs, attention weights, and model parameters. This demand can quickly exceed the memory bandwidth capacity of the GPU, leading to delays.\n\n2. **High Data Throughput**: Decoding involves processing large batches of tokens, which requires high data throughput. If the memory bandwidth is insufficient, the GPU cannot keep up with the data transfer rate, causing stalls and performance degradation.\n\n3. **Memory Access Patterns**: The way data is accessed (e.g., coalesced vs. uncoalesced memory access) can significantly impact bandwidth utilization. Poorly optimized memory access patterns can lead to underutilized bandwidth, reducing overall performance.\n\n4. **Batch Processing and Parallelism**: Decoding often involves batch processing, which can be memory-intensive. If the GPU is not optimized for this type of workload, the memory bandwidth becomes a limiting factor.\n\n5. **Model Size and Complexity**: Larger models require more memory and higher bandwidth to handle the increased data volume and complexity during decoding.\n\n6. **Latency and Synchronization**: Memory bandwidth limitations can also affect the latency of data transfers between the GPU and"
+    ],
+    "orthrus-ar": [
+      "We are asked to compute:\n\n$$\n17 \\times 24\n$$\n\n---\n\n### Step 1: Break down the multiplication\n\nWe can use the distributive property to make the multiplication easier:\n\n$$\n17 \\times 24 = 17 \\times (20 + 4) = (17 \\times 20) + (17 \\times 4)\n$$\n\n---\n\n### Step 2: Compute each part\n\n- $17 \\times 20 = 340$\n- $17 \\times 4 = 68$\n\n---\n\n### Step 3: Add the results\n\n$$\n340 + 68 = 408\n$$\n\n---\n\n### \u2705 Final Answer:\n\n$$\n\\boxed{408}\n$$",
+      "We are given the equation:\n\n$$\n3x + 7 = 25\n$$\n\n### Step 1: Subtract 7 from both sides to isolate the term with $ x $\n\n$$\n3x + 7 - 7 = 25 - 7\n$$\n\n$$\n3x = 18\n$$\n\n### Step 2: Divide both sides by 3 to solve for $ x $\n\n$$\n\\frac{3x}{3} = \\frac{18}{3}\n$$\n\n$$\nx = 6\n$$\n\n### \u2705 Final Answer:\n$$\n\\boxed{6}\n$$",
+      "To find the **sum of the first 20 positive integers**, we can use the **arithmetic series formula**:\n\n$$\nS_n = \\frac{n}{2} \\times (a_1 + a_n)\n$$\n\nWhere:\n- $ S_n $ is the sum of the first $ n $ terms,\n- $ n $ is the number of terms,\n- $ a_1 $ is the first term,\n- $ a_n $ is the last term.\n\n---\n\n### Step 1: Identify the values\n- $ n = 20 $ (first 20 positive integers),\n- $ a_1 = 1 $ (first term),\n- $ a_{20} = 20 $ (20th term).\n\n---\n\n### Step 2: Plug into the formula\n\n$$\nS_{20} = \\frac{20}{2} \\times (1 + 20) = 10 \\times 21 = 210\n$$\n\n---\n\n### \u2705 Final Answer:\n$$\n\\boxed{210}\n$$\n\n---\n\n### \ud83e\udde0 Explanation of the Formula:\nThe formula $ S_n = \\frac{n}{2} \\times (a_1 + a_n",
+      "To find the **average speed** in **meters per second (m/s)**, follow these steps:\n\n---\n\n### **Step 1: Convert the distance from km to meters**\n\n$$\n240 \\text{ km} = 240 \\times 1000 = 240,000 \\text{ meters}\n$$\n\n---\n\n### **Step 2: Convert the time from hours to seconds**\n\n$$\n3 \\text{ hours} = 3 \\times 3600 = 10,800 \\text{ seconds}\n$$\n\n---\n\n### **Step 3: Use the formula for average speed**\n\n$$\n\\text{Average speed} = \\frac{\\text{Distance}}{\\text{Time}} = \\frac{240,000 \\text{ m}}{10,800 \\text{ s}}\n$$\n\n$$\n\\text{Average speed} = \\frac{240,000}{10,800} \\approx 22.22 \\text{ m/s}\n$$\n\n---\n\n### \u2705 **Final Answer:**\n\n$$\n\\boxed{22.22} \\text{ m/s",
+      "Sure! Here's a Python function that returns the **n-th Fibonacci number iteratively**:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0  # 0th Fibonacci number is 0\n    elif n == 1:\n        return 1  # 1st Fibonacci number is 1\n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n\n    return b\n```\n\n### Explanation:\n- `n` is the index of the Fibonacci number you want.\n- If `n` is 0, return 0 (the 0th Fibonacci number).\n- If `n` is 1, return 1 (the 1st Fibonacci number).\n- For `n >= 2`, we use an iterative approach to compute the Fibonacci numbers up to `n` using two variables `a` and `b`, which represent the previous two numbers in the sequence.\n\n### Example usage:\n\n```python\nprint(fibonacci(0))  # Output: 0\nprint(fibonacci(1))  # Output: 1\nprint(fibonacci(2))  # Output",
+      "Here's a Python function to reverse a linked list, including the `Node` class:\n\n### \u2705 **Node Class**\n```python\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n```\n\n### \u2705 **Reverse a Linked List Function**\n```python\ndef reverse_linked_list(head):\n    prev = None\n    current = head\n\n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n\n    return prev\n```\n\n### \u2705 **Example Usage**\n```python\n# Create a sample linked list\na = Node(1)\nb = Node(2)\nc = Node(3)\n\na.next = b\nb.next = c\n\n# Reverse the linked list\nreversed_head = reverse_linked_list(a)\n\n# Print the reversed list\ncurrent = reversed_head\nwhile current:\n    print(current.data, end=\" -> \")\n    current = current.next\nprint(\"None\")\n```\n\n### \u2705 **Output**\n```\n3 -> 2 -> 1 -> None\n```\n\n### \ud83d\udccc Notes:\n- The `reverse_linked_list` function modifies the `next` pointers of the nodes.\n",
+      "You can use the following bash one-liner to find the 10 largest files under the current directory:\n\n```bash\nfind . -type f -exec du -ch {} + | sort -hr | head -n 10\n```\n\n### Explanation:\n- `find . -type f` finds all regular files in the current directory and its subdirectories.\n- `-exec du -ch {} +` executes `du` on each file, showing human-readable disk usage (size and name).\n- `sort -hr` sorts the output by size in descending order (h for human-readable, r for reverse).\n- `head -n 10` outputs the first 10 lines, which are the largest files.\n\nThis will list the 10 largest files along with their sizes.",
+      "Here's a Python implementation of **binary search** with a **docstring** and **type hints**:\n\n```python\nfrom typing import List, Tuple\n\n\ndef binary_search(\n    sorted_list: List[int],  # List of sorted integers\n    target: int  # The value to search for\n) -> Tuple[int, int]:\n    \"\"\"\n    Perform binary search on a sorted list to find the index of the target.\n\n    Args:\n        sorted_list: A list of sorted integers.\n        target: The integer to search for.\n\n    Returns:\n        A tuple (index, found) where:\n        - index: The index of the target in the list if found.\n        - found: A boolean indicating whether the target was found.\n\n    Example:\n        >>> binary_search([1, 3, 5, 7, 9], 3)\n        (1, True)\n        >>> binary_search([1, 3, 5, 7, 9], 10)\n        (4, False)\n    \"\"\"\n    left: int = 0\n    right: int = len(sorted_list) - 1\n\n    while left <= right:\n        mid: int = (left + right) // 2\n\n        if sorted",
+      "A KV cache in a transformer refers to the cache of key (K) and value (V) vectors used in the attention mechanism. These vectors are stored during the computation of attention weights and are reused in subsequent steps to improve efficiency and reduce computation time. By reusing the cached K and V vectors, the model avoids recalculating them each time, which saves memory and speeds up the process.\n\nThe KV cache is crucial for maintaining performance in large-scale transformer models, as it allows the model to efficiently compute attention between different tokens without redundant calculations. This mechanism is particularly important in models like BERT, GPT, and others, where attention is a core component of the architecture.",
+      "Certainly! Here's a clear and concise description of the difference between a **process** and a **thread**:\n\n---\n\n### **Process (Process)**\n\n- **Definition**: A **process** is an **instance of a program in execution**. It is the **basic unit of execution** in an operating system.\n- **Key Characteristics**:\n  - A process has a **program counter**, **stack**, **registers**, and **memory**.\n  - It has **own resources** (like files, memory, and CPU time).\n  - It is **created by the operating system** and **terminated** when it completes or crashes.\n  - It can **create other processes** (through **fork** or **exec** system calls).\n  - It is **not the same as a thread**; it is the **larger unit** of execution.\n\n---\n\n### **Thread (Thread)**\n\n- **Definition**: A **thread** is a **lightweight unit of execution** within a process. It is **a part of a process**.\n- **Key Characteristics**:\n  - Threads share **the same memory space** as the process, which allows for **shared data** and **fast communication**.\n  - They **do not have their own",
+      "1. **Environmental Friendliness**: Bicycles produce no emissions and are a sustainable mode of transportation, helping reduce air pollution and greenhouse gas emissions in cities.\n\n2. **Cost-Effective**: Bicycles are much cheaper to purchase and maintain compared to cars, saving money on fuel, insurance, parking, and maintenance.\n\n3. **Health Benefits**: Cycling promotes physical activity, which can improve fitness, reduce the risk of chronic diseases, and enhance mental well-being in urban environments.",
+      "GPU memory bandwidth becomes a bottleneck during LLM (Large Language Model) decoding for several key reasons:\n\n1. **High Memory Demand**: Decoding processes require large amounts of memory to store intermediate outputs, attention weights, and model parameters. This demand can quickly exceed the memory bandwidth capacity of the GPU, leading to delays.\n\n2. **High Data Throughput**: Decoding involves processing large batches of tokens, which requires high data throughput. If the memory bandwidth is insufficient, the GPU cannot keep up with the data transfer rate, causing stalls and performance degradation.\n\n3. **Memory Access Patterns**: The way data is accessed (e.g., coalesced vs. uncoalesced memory access) can significantly impact bandwidth utilization. Poorly optimized memory access patterns can lead to underutilized bandwidth, reducing overall performance.\n\n4. **Batch Processing and Parallelism**: Decoding often involves batch processing, which can be memory-intensive. If the GPU is not optimized for this type of workload, the memory bandwidth becomes a limiting factor.\n\n5. **Model Size and Complexity**: Larger models require more memory and higher bandwidth to handle the increased data volume and complexity during decoding.\n\n6. **Latency and Synchronization**: Memory bandwidth limitations can also affect the latency of data transfers between the GPU and"
+    ],
+    "orthrus-diff": [
+      "We are asked to compute:\n\n$$\n17 \\times 24\n$$\n\n---\n\n### Step 1: Break down the multiplication\n\nWe can use the distributive property to make the multiplication easier:\n\n$$\n17 \\times 24 = 17 \\times (20 + 4) = (17 \\times 20) + (17 \\times 4)\n$$\n\n---\n\n### Step 2: Compute each part\n\n- $17 \\times 20 = 340$\n- $17 \\times 4 = 68$\n\n---\n\n### Step 3: Add the results\n\n$$\n340 + 68 = 408\n$$\n\n---\n\n### \u2705 Final Answer:\n\n$$\n\\boxed{408}\n$$",
+      "We are given the equation:\n\n$$\n3x + 7 = 25\n$$\n\n### Step 1: Subtract 7 from both sides to isolate the term with $ x $\n\n$$\n3x + 7 - 7 = 25 - 7\n$$\n\n$$\n3x = 18\n$$\n\n### Step 2: Divide both sides by 3 to solve for $ x $\n\n$$\n\\frac{3x}{3} = \\frac{18}{3}\n$$\n\n$$\nx = 6\n$$\n\n### \u2705 Final Answer:\n$$\n\\boxed{6}\n$$",
+      "To find the **sum of the first 20 positive integers**, we can use the **arithmetic series formula**:\n\n$$\nS_n = \\frac{n}{2} \\times (a_1 + a_n)\n$$\n\nWhere:\n- $ S_n $ is the sum of the first $ n $ terms,\n- $ n $ is the number of terms,\n- $ a_1 $ is the first term,\n- $ a_n $ is the last term.\n\n---\n\n### Step 1: Identify the values\n- $ n = 20 $ (first 20 positive integers),\n- $ a_1 = 1 $ (first term),\n- $ a_{20} = 20 $ (20th term).\n\n---\n\n### Step 2: Plug into the formula\n\n$$\nS_{20} = \\frac{20}{2} \\times (1 + 20) = 10 \\times 21 = 210\n$$\n\n---\n\n### \u2705 Final Answer:\n$$\n\\boxed{210}\n$$\n\n---\n\n### Explanation of the Formula:\nThe formula $ S_n = \\frac{n}{2} \\times (a_1 + a_n) $ works",
+      "To find the **average speed** in **meters per second (m/s)**, follow these steps:\n\n---\n\n### **Step 1: Convert the distance from km to meters**\n\n$$\n240 \\text{ km} = 240 \\times 1000 = 240,000 \\text{ meters}\n$$\n\n---\n\n### **Step 2: Convert the time from hours to seconds**\n\n$$\n3 \\text{ hours} = 3 \\times 3600 = 10,800 \\text{ seconds}\n$$\n\n---\n\n### **Step 3: Use the formula for average speed**\n\n$$\n\\text{Average speed} = \\frac{\\text{Distance}}{\\text{Time}} = \\frac{240,000 \\text{ m}}{10,800 \\text{ s}}\n$$\n\n$$\n\\text{Average speed} = \\frac{240,000}{10,800} \\approx 22.22 \\text{ m/s}\n$$\n\n---\n\n### \u2705 **Final Answer:**\n\n$$\n\\boxed{22.22} \\text{ m/s",
+      "Sure! Here's a Python function that returns the **n-th Fibonacci number iteratively**:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0  # 0th Fibonacci number is 0\n    elif n == 1:\n        return 1  # 1st Fibonacci number is 1\n    \n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    \n    return b\n```\n\n### Explanation:\n- `n` is the index of the Fibonacci number you want.\n- If `n` is 0, return 0 (the 0th Fibonacci number).\n- If `n` is 1, return 1 (the 1st Fibonacci number).\n- For `n >= 2`, we use an iterative approach to compute the Fibonacci numbers up to `n` using two variables `a` and `b`, which represent the previous two numbers in the sequence.\n\n### Example usage:\n\n```python\nprint(fibonacci(0))  # Output: 0\nprint(fibonacci(1))  # Output: 1\nprint(fibonacci(2))  # Output",
+      "Here's a Python function to reverse a linked list, including the `Node` class:\n\n### \u2705 **Node Class**\n```python\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n```\n\n### \u2705 **Reverse a Linked List Function**\n```python\ndef reverse_linked_list(head):\n    prev = None\n    current = head\n\n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n\n    return prev\n```\n\n### \u2705 **Example Usage**\n```python\n# Create a sample linked list\na = Node(1)\nb = Node(2)\nc = Node(3)\n\na.next = b\nb.next = c\n\n# Reverse the linked list\nreversed_head = reverse_linked_list(a)\n\n# Print the reversed list\ncurrent = reversed_head\nwhile current:\n    print(current.data, end=\" -> \")\n    current = current.next\nprint(\"None\")\n```\n\n### \u2705 **Output**\n```\n3 -> 2 -> 1 -> None\n```\n\n### \ud83d\udccc Notes:\n- The `reverse_linked_list` function modifies the `next` pointers of the nodes.\n",
+      "You can use the following bash one-liner to find the 10 largest files under the current directory:\n\n```bash\nfind . -type f -exec du -ch {} + | sort -rh | head -n 10\n```\n\n### Explanation:\n- `find . -type f` finds all regular files in the current directory and its subdirectories.\n- `-exec du -ch {} +` executes `du` on each file, showing human-readable disk usage (size and name).\n- `sort -rh` sorts the output by size in reverse (descending) order and human-readable (e.g., 1024K instead of 1024000 bytes).\n- `head -n 10` outputs the first 10 lines, which are the largest files.\n\nThis will list the 10 largest files in your current directory and its subdirectories.",
+      "Here's a Python implementation of **binary search** with a **docstring** and **type hints**:\n\n```python\nfrom typing import List, Tuple\n\n\ndef binary_search(\n    sorted_list: List[int],  # List of sorted integers\n    target: int  # The value to search for\n) -> Tuple[int, int]:\n    \"\"\"\n    Perform binary search on a sorted list to find the index of the target.\n\n    Args:\n        sorted_list: A list of sorted integers.\n        target: The integer to search for.\n\n    Returns:\n        A tuple (index, found) where:\n        - index: The index of the target in the list if found.\n        - found: A boolean indicating whether the target was found.\n\n    Example:\n        >>> binary_search([1, 3, 5, 7, 9], 3)\n        (1, True)\n        >>> binary_search([1, 3, 5, 7, 9], 10)\n        (4, False)\n    \"\"\"\n    left: int = 0\n    right: int = len(sorted_list) - 1\n\n    while left <= right:\n        mid: int = (left + right) // 2\n\n        if sorted",
+      "A KV cache in a transformer refers to the cache of key-value pairs used during the attention mechanism. These pairs are stored in the model's memory to efficiently retrieve and reuse previously computed information, reducing redundant calculations and improving performance.\n\nThe KV cache is crucial for maintaining efficiency in large-scale transformer models, as it allows the model to reuse previously computed attention weights, thereby reducing the overall computational cost and memory usage during inference.",
+      "Certainly! Here's a clear and concise description of the difference between a **process** and a **thread**:\n\n---\n\n### **Process (Process)**\n\n- **Definition**: A **process** is an **instance of a program in execution**. It is the **basic unit of execution** in an operating system.\n- **Key Characteristics**:\n  - A process has a **program counter**, **stack**, **registers**, and **memory**.\n  - It has **own resources** (like files, memory, and CPU time).\n  - It is **created by the operating system** and **terminated** by the OS.\n  - It can **create and terminate other processes**.\n  - It is **not the same as a thread**; it is the **larger unit** of execution.\n\n---\n\n### **Thread (Thread)**\n\n- **Definition**: A **thread** is a **lightweight unit of execution** within a process. It is **a part of a process**.\n- **Key Characteristics**:\n  - Threads share **the same memory space** as the process, which makes them **more efficient**.\n  - They **do not have their own memory space** (except for their own stack).\n  - They can **execute",
+      "1. **Environmental Friendliness**: Bicycles produce no emissions and are a sustainable mode of transportation, helping reduce air pollution and greenhouse gas emissions in cities.\n\n2. **Cost-Effective**: Bicycles are much cheaper to purchase and maintain compared to cars, saving money on fuel, insurance, parking, and maintenance.\n\n3. **Health Benefits**: Cycling promotes physical activity, which can improve fitness, reduce the risk of chronic diseases, and enhance mental well-being in urban environments.",
+      "GPU memory bandwidth becomes a bottleneck during LLM (Large Language Model) decoding for several key reasons:\n\n1. **High Memory Demand**: Decoding processes require large amounts of memory to store intermediate outputs, attention weights, and model parameters. This demand can quickly exceed the memory bandwidth capacity of the GPU, leading to delays.\n\n2. **High Data Throughput**: Decoding involves processing large batches of tokens, which requires high data throughput. If the memory bandwidth is insufficient, the GPU cannot keep up with the data transfer rate, causing stalls and performance degradation.\n\n3. **Memory Access Patterns**: The way data is accessed (e.g., coalesced vs. uncoalesced memory access) can significantly impact bandwidth utilization. Poorly optimized memory access patterns can lead to underutilized bandwidth, reducing overall performance.\n\n4. **Batch Processing and Parallelism**: Decoding often involves batch processing, which can be memory-intensive. If the GPU is not optimized for this type of workload, the memory bandwidth becomes a limiting factor.\n\n5. **Model Size and Complexity**: Larger models require more memory and higher bandwidth to handle the increased data volume and complexity during decoding.\n\n6. **Latency and Synchronization**: Memory bandwidth limitations can also affect the latency of data transfers between the GPU and"
+    ]
+  }
+}

@@ -1,0 +1,510 @@
+{
+  "config": {
+    "max_new_tokens": 512,
+    "attn": "sdpa",
+    "out": "bench/results_humaneval.json",
+    "dtype": "bf16",
+    "only": "orthrus-ar,orthrus-diff",
+    "num_prompts": 20,
+    "task": "humaneval"
+  },
+  "results": {
+    "orthrus-ar": {
+      "model_id": "chiennv/Orthrus-Qwen3-1.7B",
+      "rows": [
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+          "prompt_tokens": 143,
+          "gen_tokens": 327,
+          "seconds": 4.888492711004801,
+          "tok_per_s": 66.89178430477543
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+          "prompt_tokens": 134,
+          "gen_tokens": 373,
+          "seconds": 5.452949844999239,
+          "tok_per_s": 68.40334325503999
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef truncate_number(number: float) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n",
+          "prompt_tokens": 104,
+          "gen_tokens": 176,
+          "seconds": 2.5784875720055425,
+          "tok_per_s": 68.25706740293015
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n",
+          "prompt_tokens": 138,
+          "gen_tokens": 235,
+          "seconds": 3.540599141997518,
+          "tok_per_s": 66.37294722593725
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\" For a given list of input numbers, calculate Mean Absolute Deviation\n    around the mean of this dataset.\n    Mean Absolute Deviation is the average absolute difference between each\n    element and a centerpoint (mean in this case):\n    MAD = average | x - x_mean |\n    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n    1.0\n    \"\"\"\n",
+          "prompt_tokens": 136,
+          "gen_tokens": 260,
+          "seconds": 3.9264058920016396,
+          "tok_per_s": 66.21831953992276
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    \"\"\" Insert a number 'delimeter' between every two consecutive elements of input list `numbers'\n    >>> intersperse([], 4)\n    []\n    >>> intersperse([1, 2, 3], 4)\n    [1, 4, 2, 4, 3]\n    \"\"\"\n",
+          "prompt_tokens": 111,
+          "gen_tokens": 279,
+          "seconds": 4.142692570996587,
+          "tok_per_s": 67.34750291472446
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n",
+          "prompt_tokens": 131,
+          "gen_tokens": 345,
+          "seconds": 5.062129475001711,
+          "tok_per_s": 68.15313628458374
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\" Filter an input list of strings only for ones that contain given substring\n    >>> filter_by_substring([], 'a')\n    []\n    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')\n    ['abc', 'bacd', 'array']\n    \"\"\"\n",
+          "prompt_tokens": 112,
+          "gen_tokens": 205,
+          "seconds": 3.1039977239997825,
+          "tok_per_s": 66.04386285948654
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n",
+          "prompt_tokens": 131,
+          "gen_tokens": 248,
+          "seconds": 3.6887223180019646,
+          "tok_per_s": 67.23195150518454
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    \"\"\" From a given list of integers, generate a list of rolling maximum element found until given moment\n    in the sequence.\n    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])\n    [1, 2, 3, 3, 3, 4, 4]\n    \"\"\"\n",
+          "prompt_tokens": 119,
+          "gen_tokens": 323,
+          "seconds": 4.755677779001417,
+          "tok_per_s": 67.91881515316258
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n",
+          "prompt_tokens": 161,
+          "gen_tokens": 417,
+          "seconds": 6.122380968998186,
+          "tok_per_s": 68.11075660132177
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Input are two strings a and b consisting only of 1s and 0s.\n    Perform binary XOR on these inputs and return result also as a string.\n    >>> string_xor('010', '110')\n    '100'\n    \"\"\"\n",
+          "prompt_tokens": 101,
+          "gen_tokens": 250,
+          "seconds": 3.613676574001147,
+          "tok_per_s": 69.18162012578624
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\" Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\n    >>> longest([])\n\n    >>> longest(['a', 'b', 'c'])\n    'a'\n    >>> longest(['a', 'bb', 'ccc'])\n    'ccc'\n    \"\"\"\n",
+          "prompt_tokens": 121,
+          "gen_tokens": 277,
+          "seconds": 3.983052920004411,
+          "tok_per_s": 69.54464466409681
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n",
+          "prompt_tokens": 91,
+          "gen_tokens": 241,
+          "seconds": 3.4923807169980137,
+          "tok_per_s": 69.00736761802968
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    \"\"\" Return list of all prefixes from shortest to longest of the input string\n    >>> all_prefixes('abc')\n    ['a', 'ab', 'abc']\n    \"\"\"\n",
+          "prompt_tokens": 78,
+          "gen_tokens": 211,
+          "seconds": 3.1022687290023896,
+          "tok_per_s": 68.01473967339129
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef string_sequence(n: int) -> str:\n    \"\"\" Return a string containing space-delimited numbers starting from 0 upto n inclusive.\n    >>> string_sequence(0)\n    '0'\n    >>> string_sequence(5)\n    '0 1 2 3 4 5'\n    \"\"\"\n",
+          "prompt_tokens": 87,
+          "gen_tokens": 157,
+          "seconds": 2.208367254002951,
+          "tok_per_s": 71.09324760880112
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> count_distinct_characters('xyzXYZ')\n    3\n    >>> count_distinct_characters('Jerry')\n    4\n    \"\"\"\n",
+          "prompt_tokens": 89,
+          "gen_tokens": 219,
+          "seconds": 3.1154015380016062,
+          "tok_per_s": 70.29591445232415
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    \"\"\" Input to this function is a string representing musical notes in a special ASCII format.\n    Your task is to parse this string and return list of integers corresponding to how many beats does each\n    not last.\n\n    Here is a legend:\n    'o' - whole note, lasts four beats\n    'o|' - half note, lasts two beats\n    '.|' - quater note, lasts one beat\n\n    >>> parse_music('o o| .| o| o| .| .| .| .| o o')\n    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\n    \"\"\"\n",
+          "prompt_tokens": 191,
+          "gen_tokens": 270,
+          "seconds": 3.8734858659954625,
+          "tok_per_s": 69.70465604903185
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n",
+          "prompt_tokens": 107,
+          "gen_tokens": 306,
+          "seconds": 4.503530283996952,
+          "tok_per_s": 67.94669530420485
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef sort_numbers(numbers: str) -> str:\n    \"\"\" Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\n    >>> sort_numbers('three one five')\n    'one three five'\n    \"\"\"\n",
+          "prompt_tokens": 124,
+          "gen_tokens": 336,
+          "seconds": 4.954957196001487,
+          "tok_per_s": 67.81087842113806
+        }
+      ],
+      "total_gen_tokens": 5455,
+      "total_seconds": 80.10965707601281,
+      "aggregate_tok_per_s": 68.09416241569942,
+      "mean_tok_per_s": 68.17746254819366
+    },
+    "orthrus-diff": {
+      "model_id": "chiennv/Orthrus-Qwen3-1.7B",
+      "rows": [
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+          "prompt_tokens": 143,
+          "gen_tokens": 317,
+          "seconds": 1.469544538995251,
+          "tok_per_s": 215.71309449166986,
+          "diffusion_passes": 48,
+          "ar_passes": 49,
+          "tokens_per_cycle": 6.604166666666667,
+          "forward_passes": 96,
+          "tpf": 3.3020833333333335
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+          "prompt_tokens": 134,
+          "gen_tokens": 503,
+          "seconds": 2.7875975920032943,
+          "tok_per_s": 180.44211310948987,
+          "diffusion_passes": 92,
+          "ar_passes": 93,
+          "tokens_per_cycle": 5.467391304347826,
+          "forward_passes": 184,
+          "tpf": 2.733695652173913
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef truncate_number(number: float) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n",
+          "prompt_tokens": 104,
+          "gen_tokens": 226,
+          "seconds": 1.138073162001092,
+          "tok_per_s": 198.5812578188037,
+          "diffusion_passes": 38,
+          "ar_passes": 39,
+          "tokens_per_cycle": 5.947368421052632,
+          "forward_passes": 76,
+          "tpf": 2.973684210526316
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n",
+          "prompt_tokens": 138,
+          "gen_tokens": 235,
+          "seconds": 1.0490840190032031,
+          "tok_per_s": 224.00493739604138,
+          "diffusion_passes": 35,
+          "ar_passes": 36,
+          "tokens_per_cycle": 6.714285714285714,
+          "forward_passes": 70,
+          "tpf": 3.357142857142857
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\" For a given list of input numbers, calculate Mean Absolute Deviation\n    around the mean of this dataset.\n    Mean Absolute Deviation is the average absolute difference between each\n    element and a centerpoint (mean in this case):\n    MAD = average | x - x_mean |\n    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n    1.0\n    \"\"\"\n",
+          "prompt_tokens": 136,
+          "gen_tokens": 260,
+          "seconds": 1.3054901530049392,
+          "tok_per_s": 199.15891314962397,
+          "diffusion_passes": 44,
+          "ar_passes": 45,
+          "tokens_per_cycle": 5.909090909090909,
+          "forward_passes": 88,
+          "tpf": 2.9545454545454546
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    \"\"\" Insert a number 'delimeter' between every two consecutive elements of input list `numbers'\n    >>> intersperse([], 4)\n    []\n    >>> intersperse([1, 2, 3], 4)\n    [1, 4, 2, 4, 3]\n    \"\"\"\n",
+          "prompt_tokens": 111,
+          "gen_tokens": 268,
+          "seconds": 1.4546836270019412,
+          "tok_per_s": 184.2324990983365,
+          "diffusion_passes": 48,
+          "ar_passes": 49,
+          "tokens_per_cycle": 5.583333333333333,
+          "forward_passes": 96,
+          "tpf": 2.7916666666666665
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n",
+          "prompt_tokens": 131,
+          "gen_tokens": 345,
+          "seconds": 1.530837848004012,
+          "tok_per_s": 225.36678228189186,
+          "diffusion_passes": 51,
+          "ar_passes": 52,
+          "tokens_per_cycle": 6.764705882352941,
+          "forward_passes": 102,
+          "tpf": 3.3823529411764706
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\" Filter an input list of strings only for ones that contain given substring\n    >>> filter_by_substring([], 'a')\n    []\n    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')\n    ['abc', 'bacd', 'array']\n    \"\"\"\n",
+          "prompt_tokens": 112,
+          "gen_tokens": 205,
+          "seconds": 1.0389547439990565,
+          "tok_per_s": 197.31369550412887,
+          "diffusion_passes": 34,
+          "ar_passes": 35,
+          "tokens_per_cycle": 6.029411764705882,
+          "forward_passes": 68,
+          "tpf": 3.014705882352941
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n",
+          "prompt_tokens": 131,
+          "gen_tokens": 247,
+          "seconds": 0.9423744369996712,
+          "tok_per_s": 262.1038838727394,
+          "diffusion_passes": 31,
+          "ar_passes": 32,
+          "tokens_per_cycle": 7.967741935483871,
+          "forward_passes": 62,
+          "tpf": 3.9838709677419355
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    \"\"\" From a given list of integers, generate a list of rolling maximum element found until given moment\n    in the sequence.\n    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])\n    [1, 2, 3, 3, 3, 4, 4]\n    \"\"\"\n",
+          "prompt_tokens": 119,
+          "gen_tokens": 323,
+          "seconds": 1.163942051003687,
+          "tok_per_s": 277.50522435500255,
+          "diffusion_passes": 38,
+          "ar_passes": 39,
+          "tokens_per_cycle": 8.5,
+          "forward_passes": 76,
+          "tpf": 4.25
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n",
+          "prompt_tokens": 161,
+          "gen_tokens": 418,
+          "seconds": 1.9319009450045996,
+          "tok_per_s": 216.3672009586417,
+          "diffusion_passes": 63,
+          "ar_passes": 64,
+          "tokens_per_cycle": 6.634920634920635,
+          "forward_passes": 126,
+          "tpf": 3.3174603174603177
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Input are two strings a and b consisting only of 1s and 0s.\n    Perform binary XOR on these inputs and return result also as a string.\n    >>> string_xor('010', '110')\n    '100'\n    \"\"\"\n",
+          "prompt_tokens": 101,
+          "gen_tokens": 250,
+          "seconds": 1.3091948829969624,
+          "tok_per_s": 190.9570555513545,
+          "diffusion_passes": 43,
+          "ar_passes": 44,
+          "tokens_per_cycle": 5.813953488372093,
+          "forward_passes": 86,
+          "tpf": 2.9069767441860463
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\" Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\n    >>> longest([])\n\n    >>> longest(['a', 'b', 'c'])\n    'a'\n    >>> longest(['a', 'bb', 'ccc'])\n    'ccc'\n    \"\"\"\n",
+          "prompt_tokens": 121,
+          "gen_tokens": 238,
+          "seconds": 1.2090297049944638,
+          "tok_per_s": 196.8520699010367,
+          "diffusion_passes": 40,
+          "ar_passes": 41,
+          "tokens_per_cycle": 5.95,
+          "forward_passes": 80,
+          "tpf": 2.975
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n",
+          "prompt_tokens": 91,
+          "gen_tokens": 308,
+          "seconds": 1.797441101000004,
+          "tok_per_s": 171.35471077669504,
+          "diffusion_passes": 60,
+          "ar_passes": 61,
+          "tokens_per_cycle": 5.133333333333334,
+          "forward_passes": 120,
+          "tpf": 2.566666666666667
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    \"\"\" Return list of all prefixes from shortest to longest of the input string\n    >>> all_prefixes('abc')\n    ['a', 'ab', 'abc']\n    \"\"\"\n",
+          "prompt_tokens": 78,
+          "gen_tokens": 211,
+          "seconds": 1.031567931000609,
+          "tok_per_s": 204.54300066824726,
+          "diffusion_passes": 35,
+          "ar_passes": 36,
+          "tokens_per_cycle": 6.0285714285714285,
+          "forward_passes": 70,
+          "tpf": 3.0142857142857142
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef string_sequence(n: int) -> str:\n    \"\"\" Return a string containing space-delimited numbers starting from 0 upto n inclusive.\n    >>> string_sequence(0)\n    '0'\n    >>> string_sequence(5)\n    '0 1 2 3 4 5'\n    \"\"\"\n",
+          "prompt_tokens": 87,
+          "gen_tokens": 157,
+          "seconds": 0.6967290379980113,
+          "tok_per_s": 225.33867750241254,
+          "diffusion_passes": 23,
+          "ar_passes": 24,
+          "tokens_per_cycle": 6.826086956521739,
+          "forward_passes": 46,
+          "tpf": 3.4130434782608696
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> count_distinct_characters('xyzXYZ')\n    3\n    >>> count_distinct_characters('Jerry')\n    4\n    \"\"\"\n",
+          "prompt_tokens": 89,
+          "gen_tokens": 218,
+          "seconds": 1.1059371689989348,
+          "tok_per_s": 197.11788889176034,
+          "diffusion_passes": 34,
+          "ar_passes": 35,
+          "tokens_per_cycle": 6.411764705882353,
+          "forward_passes": 68,
+          "tpf": 3.2058823529411766
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    \"\"\" Input to this function is a string representing musical notes in a special ASCII format.\n    Your task is to parse this string and return list of integers corresponding to how many beats does each\n    not last.\n\n    Here is a legend:\n    'o' - whole note, lasts four beats\n    'o|' - half note, lasts two beats\n    '.|' - quater note, lasts one beat\n\n    >>> parse_music('o o| .| o| o| .| .| .| .| o o')\n    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\n    \"\"\"\n",
+          "prompt_tokens": 191,
+          "gen_tokens": 270,
+          "seconds": 1.339722115000768,
+          "tok_per_s": 201.5343308711786,
+          "diffusion_passes": 43,
+          "ar_passes": 44,
+          "tokens_per_cycle": 6.27906976744186,
+          "forward_passes": 86,
+          "tpf": 3.13953488372093
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\n\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n",
+          "prompt_tokens": 107,
+          "gen_tokens": 312,
+          "seconds": 1.9352547239977866,
+          "tok_per_s": 161.21908714708132,
+          "diffusion_passes": 62,
+          "ar_passes": 63,
+          "tokens_per_cycle": 5.032258064516129,
+          "forward_passes": 124,
+          "tpf": 2.5161290322580645
+        },
+        {
+          "category": "humaneval",
+          "prompt": "Complete the following Python function. Reply with the full function implementation.\n\nfrom typing import List\n\n\ndef sort_numbers(numbers: str) -> str:\n    \"\"\" Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\n    >>> sort_numbers('three one five')\n    'one three five'\n    \"\"\"\n",
+          "prompt_tokens": 124,
+          "gen_tokens": 336,
+          "seconds": 1.1529460240053595,
+          "tok_per_s": 291.4273461239137,
+          "diffusion_passes": 37,
+          "ar_passes": 38,
+          "tokens_per_cycle": 9.08108108108108,
+          "forward_passes": 74,
+          "tpf": 4.54054054054054
+        }
+      ],
+      "total_gen_tokens": 5647,
+      "total_seconds": 27.390305807013647,
+      "aggregate_tok_per_s": 206.16783323952563,
+      "mean_tok_per_s": 211.05668847350248,
+      "total_cycles": 899,
+      "total_forward_passes": 1798,
+      "mean_tokens_per_cycle": 6.281423804226919,
+      "tpf": 3.1407119021134595,
+      "tpf_by_category": {
+        "humaneval": 3.1407119021134595
+      }
+    }
+  },
+  "invariants": {
+    "I2  orthrus-ar == orthrus-diff (spec decoding is lossless)": {
+      "matched": 9,
+      "total": 20
+    }
+  },
+  "texts": {
+    "orthrus-ar": [
+      "Here is the complete implementation of the `has_close_elements` function:\n\n```python\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\"Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    \n    Args:\n        numbers: A list of float numbers.\n        threshold: The minimum distance between two numbers to consider them \"close\".\n        \n    Returns:\n        True if there are any two numbers in the list that are closer than the threshold.\n        False otherwise.\n    \"\"\"\n    # Sort the list to easily compare adjacent elements\n    numbers.sort()\n    \n    # Iterate through adjacent pairs and check if their difference is less than the threshold\n    for i in range(len(numbers) - 1):\n        if numbers[i+1] - numbers[i] < threshold:\n            return True\n    \n    return False\n```\n\n### Example Usage:\n\n```python\nprint(has_close_elements([1.0, 2.0, 3.0], 0.5))  # False\nprint(has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3))  # True\n```\n\n### Explanation:\n- The list is sorted to ensure that we can compare adjacent elements.\n- We check the difference between each pair of adjacent elements.\n- If any pair has a difference less than the threshold, the function returns `True`.\n- If no such pair is found, it returns `False`.",
+      "Here's the complete implementation of the `separate_paren_groups` function:\n\n```python\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n    # Remove all spaces from the input string\n    cleaned = paren_string.replace(' ', '')\n    \n    # Initialize a list to hold the result\n    result = []\n    \n    # Initialize a counter for the current depth of parentheses\n    depth = 0\n    \n    # Iterate through each character in the cleaned string\n    for char in cleaned:\n        if char == '(':\n            depth += 1\n        elif char == ')':\n            depth -= 1\n        # When the depth returns to 0, it means we've completed a group\n        if depth == 0:\n            result.append(''.join(result[-1:] + [char]))\n            result.pop()\n    \n    return result\n```\n\n### Explanation:\n- The function first removes all spaces from the input string.\n- It then iterates through the string, tracking the depth of parentheses.\n- When the depth returns to 0, it means a group of parentheses has been completed, and it is added to the result list.\n- The function returns the list of groups.\n\n### Example:\n```python\nprint(separate_paren_groups('( ) (( )) (( )( ))'))  # Output: ['()', '(())', '(()())']\n```",
+      "Here's the complete implementation of the `truncate_number` function:\n\n```python\ndef truncate_number(number: float) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n    return number - int(number)\n```\n\n### Explanation:\n- `int(number)` converts the float to its integer part (floor of the number).\n- Subtracting this from the original number gives the **decimal part** (the remainder after removing the integer part).\n- This works for any positive float, including integers (e.g., `truncate_number(4.0)` returns `0.0`).",
+      "Here is the complete implementation of the `below_zero` function:\n\n```python\nfrom typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\"You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of the account falls below zero,\n    and at that point the function should return True. Otherwise, it should return False.\n\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n    balance = 0\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return True\n    return False\n```\n\n### Explanation:\n- The function keeps track of the account balance.\n- For each operation in the list, it updates the balance.\n- If at any point the balance becomes negative, the function returns `True`.\n- If the loop completes without the balance ever going below zero, it returns `False`.\n\nThis implementation is efficient and handles all edge cases correctly.",
+      "Here's the complete implementation of the `mean_absolute_deviation` function in Python:\n\n```python\nfrom typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\"Calculate the Mean Absolute Deviation (MAD) of a list of numbers.\n    \n    Args:\n        numbers: A list of float numbers.\n        \n    Returns:\n        The Mean Absolute Deviation as a float.\n    \"\"\"\n    if not numbers:\n        raise ValueError(\"Cannot compute MAD of an empty list.\")\n    \n    # Calculate the mean\n    mean = sum(numbers) / len(numbers)\n    \n    # Calculate the absolute differences from the mean\n    absolute_deviations = [abs(num - mean) for num in numbers]\n    \n    # Calculate the average of the absolute deviations\n    mad = sum(absolute_deviations) / len(numbers)\n    \n    return mad\n```\n\n### Example Usage:\n\n```python\nprint(mean_absolute_deviation([1.0, 2.0, 3.0, 4.0]))  # Output: 1.0\n```\n\n### Notes:\n- The function handles the case where the input list is empty by raising a `ValueError`.\n- It correctly computes the mean and then the average of the absolute differences from the mean.",
+      "Here is the complete implementation of the `intersperse` function:\n\n```python\nfrom typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    \"\"\"Insert a number 'delimeter' between every two consecutive elements of input list `numbers`.\n    \n    Args:\n        numbers: A list of integers.\n        delimeter: The integer to insert between elements.\n        \n    Returns:\n        A new list with the 'delimeter' inserted between consecutive elements.\n        \n    Examples:\n        >>> intersperse([], 4)\n        []\n        >>> intersperse([1, 2, 3], 4)\n        [1, 4, 2, 4, 3]\n    \"\"\"\n    result = []\n    for num in numbers:\n        result.append(num)\n        if len(numbers) > 1 and result[-1] != numbers[-1]:\n            result.append(delimeter)\n    return result\n```\n\n### Explanation:\n- We iterate through each number in the input list.\n- We append the number to the result list.\n- If the list is not empty and the current number is not the last element, we append the `delimeter`.\n- This ensures the `delimeter` is inserted between elements, not at the end.\n\nLet me know if you want a version that handles edge cases like empty lists or single-element lists!",
+      "Here's the complete implementation of the `parse_nested_parens` function:\n\n```python\nfrom typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n    result = []\n    groups = paren_string.split()\n    \n    for group in groups:\n        max_depth = 0\n        current_depth = 0\n        \n        for char in group:\n            if char == '(':\n                current_depth += 1\n                if current_depth > max_depth:\n                    max_depth = current_depth\n            elif char == ')':\n                current_depth -= 1\n        \n        result.append(max_depth)\n    \n    return result\n```\n\n### Explanation:\n- The function splits the input string by spaces to get individual groups.\n- For each group, it tracks the maximum depth of parentheses using a counter.\n- It increments the counter when encountering `'('` and decrements it when encountering `')'`.\n- The maximum depth encountered during the traversal is recorded for each group.\n- The result is a list of integers, one for each group, representing the maximum depth of nesting.\n\n### Example:\n```python\nprint(parse_nested_parens('(()()) ((())) () ((())()())'))  # Output: [2, 3, 1, 3]\n```",
+      "Here is the complete implementation of the `filter_by_substring` function:\n\n```python\nfrom typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\"Filter an input list of strings only for ones that contain given substring.\n    \n    Args:\n        strings: A list of strings to be filtered.\n        substring: The substring to search for in each string.\n        \n    Returns:\n        A list of strings from the input that contain the given substring.\n    \"\"\"\n    return [s for s in strings if substring in s]\n```\n\n### Example Usage:\n\n```python\nprint(filter_by_substring([], 'a'))        # Output: []\nprint(filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a'))  # Output: ['abc', 'bacd', 'array']\n```\n\nThis function uses a list comprehension to filter the input list, checking if each string contains the given substring using the `in` operator.",
+      "Here is the complete implementation of the `sum_product` function as requested:\n\n```python\nfrom typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\"For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    \n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n    total_sum = 0\n    total_product = 1\n\n    for num in numbers:\n        total_sum += num\n        total_product *= num\n\n    return (total_sum, total_product)\n```\n\n### Explanation:\n- **Sum**: Iterates through the list and accumulates the sum.\n- **Product**: Iterates through the list and accumulates the product.\n- **Edge Case**: If the list is empty, the sum is `0` and the product is `1`, as specified.\n\nYou can use this function in your code to compute the sum and product of a list of integers.",
+      "Here's the complete implementation of the `rolling_max` function:\n\n```python\nfrom typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    \"\"\"From a given list of integers, generate a list of rolling maximum element found until given moment\n    in the sequence.\n    \n    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])\n    [1, 2, 3, 3, 3, 4, 4]\n    \"\"\"\n    if not numbers:\n        return []\n    \n    max_so_far = numbers[0]\n    result = [max_so_far]\n    \n    for i in range(1, len(numbers)):\n        if numbers[i] > max_so_far:\n            max_so_far = numbers[i]\n        result.append(max_so_far)\n    \n    return result\n```\n\n### Explanation:\n- The function starts by checking if the input list is empty and returns an empty list if so.\n- It initializes `max_so_far` with the first element of the list.\n- It then iterates through the list starting from the second element, updating `max_so_far` whenever a larger number is found.\n- The result list is built by appending the current `max_so_far` at each step.\n\n### Example:\n```python\nprint(rolling_max([1, 2, 3, 2, 3, 4, 2]))  # Output: [1, 2, 3, 3, 3, 4, 4]\n```",
+      "Here is the complete implementation of the `make_palindrome` function based on the provided algorithm:\n\n```python\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n    if not string:\n        return string\n\n    # Find the longest palindromic suffix\n    n = len(string)\n    max_len = 0\n    for i in range(n - 1, -1, -1):\n        if is_palindrome(string[i:]):\n            max_len = i + 1  # Length of the palindromic suffix\n\n    # The part before the palindromic suffix is the prefix to reverse\n    prefix = string[:n - max_len]\n    return string + prefix[::-1]\n```\n\n### Explanation:\n- `is_palindrome` checks if a string is a palindrome.\n- `make_palindrome`:\n  - Finds the longest palindromic suffix of the input string.\n  - Reverses the prefix of the string that comes before this palindromic suffix.\n  - Appends this reversed prefix to the original string to form the shortest palindrome.\n\n### Example:\n```python\nprint(make_palindrome('cat'))  # Output: 'catac'\nprint(make_palindrome('cata')) # Output: 'catac'\nprint(make_palindrome(''))     # Output: ''\n```\n\nLet me know if you'd like a version that handles edge cases or more complex scenarios!",
+      "Here is the complete implementation of the `string_xor` function:\n\n```python\nfrom typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Perform binary XOR on two strings consisting of 1s and 0s.\n    Returns the result as a string.\n    \"\"\"\n    result = []\n    for i in range(len(a)):\n        # Convert characters to integers for XOR operation\n        x = int(a[i])\n        y = int(b[i])\n        # XOR operation: x ^ y\n        result.append('1' if (x ^ y) else '0')\n    return ''.join(result)\n```\n\n### Example usage:\n```python\nprint(string_xor('010', '110'))  # Output: '100'\n```\n\n### Explanation:\n- The function iterates over each character in the input strings `a` and `b`.\n- It converts each character to an integer (`0` or `1`).\n- It performs the XOR operation (`x ^ y`) and appends `'1'` or `'0'` to the result list based on the result of the XOR.\n- Finally, it joins the list into a string and returns it.",
+      "Here is the complete implementation of the `longest` function as requested:\n\n```python\nfrom typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\"Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\"\"\"\n    if not strings:\n        return None\n    \n    # Find the string with the maximum length\n    max_length = max(len(s) for s in strings)\n    # Find the first string with the maximum length\n    for s in strings:\n        if len(s) == max_length:\n            return s\n    return None\n```\n\n### Explanation:\n- If the input list is empty, return `None`.\n- Otherwise, find the maximum length of the strings.\n- Iterate through the list to find the first string with that maximum length and return it.\n- If no string is found (which can't happen if the list is not empty), return `None`.\n\n### Example Usage:\n```python\nprint(longest(['a', 'b', 'c']))        # 'a'\nprint(longest(['a', 'bb', 'ccc']))     # 'ccc'\nprint(longest(['x', 'y', 'z']))        # 'x'\nprint(longest([]))                    # None\n```",
+      "Here's the complete implementation of the `greatest_common_divisor` function using the Euclidean algorithm, which is efficient and commonly used for this purpose:\n\n```python\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\"Return the greatest common divisor (GCD) of two integers a and b.\n    Uses the Euclidean algorithm for efficiency.\n    \n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n    a, b = abs(a), abs(b)  # Ensure a and b are non-negative\n    while b != 0:\n        a, b = b, a % b\n    return a\n```\n\n### Explanation:\n- The function uses the Euclidean algorithm, which repeatedly replaces the larger number with the remainder when the larger number is divided by the smaller one.\n- The process continues until the remainder is zero, at which point the non-zero number is the GCD.\n- The `abs()` function is used to ensure the inputs are treated as non-negative, which is necessary for the algorithm to work correctly.",
+      "Here's the complete implementation of the `all_prefixes` function:\n\n```python\nfrom typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    \"\"\"Return list of all prefixes from shortest to longest of the input string\n    >>> all_prefixes('abc')\n    ['a', 'ab', 'abc']\n    \"\"\"\n    return [string[:i] for i in range(1, len(string) + 1)]\n```\n\n### Explanation:\n- The function uses a list comprehension to generate all prefixes of the input string.\n- `string[:i]` gives the substring from the start up to (but not including) index `i`.\n- The range `range(1, len(string) + 1)` generates indices from 1 to the length of the string, inclusive.\n- This ensures that all prefixes (from length 1 to the full string) are included.\n\n### Example:\n```python\nprint(all_prefixes('abc'))  # Output: ['a', 'ab', 'abc']\n```",
+      "Here's the complete implementation of the `string_sequence` function:\n\n```python\ndef string_sequence(n: int) -> str:\n    \"\"\"Return a string containing space-delimited numbers starting from 0 up to n inclusive.\n    >>> string_sequence(0)\n    '0'\n    >>> string_sequence(5)\n    '0 1 2 3 4 5'\n    \"\"\"\n    return ' '.join(str(i) for i in range(n + 1))\n```\n\n### Explanation:\n- `range(n + 1)` generates numbers from `0` to `n` inclusive.\n- `str(i)` converts each number to a string.\n- `' '.join(...)` joins them with spaces in between.\n\nThis function works for any non-negative integer `n`.",
+      "Here's the complete implementation of the `count_distinct_characters` function in Python:\n\n```python\ndef count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of.\n    \n    Args:\n        string: A string input.\n        \n    Returns:\n        The number of distinct characters (case-insensitive).\n    \"\"\"\n    # Convert the string to lowercase to make the comparison case-insensitive\n    lower_string = string.lower()\n    \n    # Use a set to store unique characters\n    unique_chars = set(lower_string)\n    \n    # Return the number of unique characters\n    return len(unique_chars)\n```\n\n### Example Usage:\n\n```python\nprint(count_distinct_characters('xyzXYZ'))  # Output: 3\nprint(count_distinct_characters('Jerry'))   # Output: 4\n```\n\nThis function works by converting the input string to lowercase, then using a set to store the characters, which automatically removes duplicates. The length of the set gives the number of distinct characters.",
+      "Here is the complete Python function that parses the given music string and returns a list of integers representing the number of beats each note lasts:\n\n```python\nfrom typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    \"\"\" Parse a string of musical notes into a list of beat counts.\n    \n    Args:\n        music_string: A string containing notes in the format 'o', 'o|', '.|', etc.\n        \n    Returns:\n        A list of integers representing the number of beats each note lasts.\n    \"\"\"\n    notes = music_string.split()\n    result = []\n    \n    for note in notes:\n        if note == 'o':\n            result.append(4)\n        elif note == 'o|':\n            result.append(2)\n        elif note == '.|':\n            result.append(1)\n    \n    return result\n```\n\n### Example Usage:\n```python\nprint(parse_music('o o| .| o| o| .| .| .| .| o o'))\n# Output: [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\n```\n\nThis function splits the input string by spaces and processes each note to determine the number of beats it lasts based on the given legend.",
+      "Here's the complete implementation of the `how_many_times` function in Python. This function counts the number of times a given `substring` appears in a `string`, including overlapping cases.\n\n```python\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\"Find how many times a given substring can be found in the original string. Count overlapping cases.\"\"\"\n    if not substring:\n        return 0  # Handle empty substring case\n    \n    count = 0\n    start = 0\n    while True:\n        # Find the next occurrence of the substring starting from 'start'\n        index = string.find(substring, start)\n        if index == -1:\n            break\n        count += 1\n        start = index + 1  # Move to the next character after the found substring\n    \n    return count\n```\n\n### Example Usage:\n\n```python\nprint(how_many_times('', 'a'))        # Output: 0\nprint(how_many_times('aaa', 'a'))     # Output: 3\nprint(how_many_times('aaaa', 'aa'))   # Output: 3\nprint(how_many_times('ababa', 'aba')) # Output: 2\n```\n\n### Notes:\n- The function uses `str.find()` to find the substring starting from a given index.\n- It increments the search start index after finding a match to count overlapping cases.\n- If the `substring` is empty, it returns `0` immediately.",
+      "Here's the complete implementation of the `sort_numbers` function:\n\n```python\nfrom typing import List\n\n\ndef sort_numbers(numbers: str) -> str:\n    \"\"\" Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\n    >>> sort_numbers('three one five')\n    'one three five'\n    \"\"\"\n    # Create a dictionary to map string numbers to their integer values\n    number_to_value = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    \n    # Split the input string into a list of numbers\n    numbers_list = numbers.split()\n    \n    # Sort the list based on the integer values\n    sorted_numbers = sorted(numbers_list, key=lambda x: number_to_value[x])\n    \n    # Join the sorted numbers into a string separated by spaces\n    return ' '.join(sorted_numbers)\n```\n\n### Example Usage:\n```python\nprint(sort_numbers('three one five'))  # Output: 'one three five'\nprint(sort_numbers('nine eight seven six five four three two one zero'))  # Output: 'zero one two three four five six seven eight nine'\n```"
+    ],
+    "orthrus-diff": [
+      "Here's the complete implementation of the `has_close_elements` function:\n\n```python\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\"Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    \n    Args:\n        numbers: A list of float numbers.\n        threshold: The minimum distance between two numbers to consider them \"close\".\n        \n    Returns:\n        True if there are any two numbers in the list that are closer than the threshold.\n        False otherwise.\n    \"\"\"\n    # Sort the list to easily compare adjacent elements\n    numbers.sort()\n    \n    # Iterate through adjacent pairs\n    for i in range(len(numbers) - 1):\n        if numbers[i+1] - numbers[i] < threshold:\n            return True\n    \n    return False\n```\n\n### Example Usage:\n\n```python\nprint(has_close_elements([1.0, 2.0, 3.0], 0.5))  # False\nprint(has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3))  # True\n```\n\n### Explanation:\n- The list is sorted to ensure that we can compare adjacent elements.\n- We check the difference between each pair of adjacent elements.\n- If any pair has a difference less than the threshold, the function returns `True`.\n- If no such pair is found, it returns `False`.",
+      "Here's the complete implementation of the `separate_paren_groups` function:\n\n```python\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n    # Remove all spaces from the input string\n    cleaned = paren_string.replace(' ', '')\n    \n    # Initialize a list to hold the result\n    result = []\n    \n    # Initialize a stack to track the depth of parentheses\n    stack = []\n    \n    # Iterate through each character in the cleaned string\n    for char in cleaned:\n        if char == '(':\n            stack.append(char)\n        elif char == ')':\n            if stack:\n                stack.pop()\n            else:\n                # If we encounter a closing parenthesis without an open one, it's invalid\n                # But the problem states that the input is valid, so we ignore this\n                pass\n    \n    # Now, we need to track the groups of parentheses\n    # We can use a list to keep track of the current group\n    current_group = []\n    groups = []\n    \n    # Iterate through the cleaned string again\n    for char in cleaned:\n        if char == '(':\n            current_group.append(char)\n        elif char == ')':\n            current_group.append(char)\n            # If the current group is not empty, add it to the groups list\n            if current_group:\n                groups.append(''.join(current_group))\n                current_group = []\n    \n    return groups\n```\n\n### Example Usage:\n\n```python\nprint(separate_paren_groups('( ) (( )) (( )( ))'))  # Output: ['()', '(())', '(()())']\n```\n\n### Explanation:\n\n- The function first removes all spaces from the input string.\n- It then uses a stack to track the depth of parentheses.\n- It iterates through the cleaned string again to build groups of parentheses.\n- Each time a closing parenthesis is encountered, the current group is added to the result list, and the group is reset.\n\nThis implementation ensures that the groups are correctly separated and returned as a list of strings.",
+      "Here's the complete implementation of the `truncate_number` function:\n\n```python\ndef truncate_number(number: float) -> float:\n    \"\"\"Given a positive floating point number, it can be decomposed into\n    an integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n    return number - int(number)\n```\n\n### Explanation:\n- `int(number)` converts the float to its integer part (floor of the number).\n- Subtracting this from the original number gives the decimal part, which is always between 0 (inclusive) and 1 (exclusive).\n\n### Example:\n```python\ntruncate_number(3.5)  # Returns 0.5\ntruncate_number(2.999)  # Returns 0.999\ntruncate_number(4.0)  # Returns 0.0\n```\n\nLet me know if you want to handle edge cases like negative numbers or zero!",
+      "Here is the complete implementation of the `below_zero` function:\n\n```python\nfrom typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\"You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of the account falls below zero,\n    and at that point the function should return True. Otherwise, it should return False.\n\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n    balance = 0\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return True\n    return False\n```\n\n### Explanation:\n- The function keeps track of the account balance.\n- For each operation in the list, it updates the balance.\n- If at any point the balance becomes negative, the function returns `True`.\n- If the loop completes without the balance ever going below zero, it returns `False`.\n\nThis implementation is efficient and handles all edge cases correctly.",
+      "Here is the complete implementation of the `mean_absolute_deviation` function in Python:\n\n```python\nfrom typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\"Calculate the Mean Absolute Deviation (MAD) of a list of numbers.\n    \n    Args:\n        numbers: A list of float numbers.\n        \n    Returns:\n        The Mean Absolute Deviation as a float.\n    \"\"\"\n    if not numbers:\n        raise ValueError(\"Cannot compute MAD of an empty list.\")\n    \n    # Calculate the mean\n    mean = sum(numbers) / len(numbers)\n    \n    # Calculate the absolute differences from the mean\n    absolute_deviations = [abs(num - mean) for num in numbers]\n    \n    # Calculate the average of the absolute deviations\n    mad = sum(absolute_deviations) / len(numbers)\n    \n    return mad\n```\n\n### Example Usage:\n\n```python\nprint(mean_absolute_deviation([1.0, 2.0, 3.0, 4.0]))  # Output: 1.0\n```\n\n### Notes:\n- The function handles the case where the input list is empty by raising a `ValueError`.\n- It correctly computes the mean and then the average of the absolute differences from the mean.",
+      "Here is the complete implementation of the `intersperse` function:\n\n```python\nfrom typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    \"\"\"Insert a number 'delimeter' between every two consecutive elements of input list `numbers`.\n    \n    Args:\n        numbers: A list of integers.\n        delimeter: The integer to insert between elements.\n        \n    Returns:\n        A new list with the 'delimeter' inserted between consecutive elements.\n        \n    Examples:\n        >>> intersperse([], 4)\n        []\n        >>> intersperse([1, 2, 3], 4)\n        [1, 4, 2, 4, 3]\n    \"\"\"\n    result = []\n    for num in numbers:\n        result.append(num)\n        if result and len(result) > 1:\n            result.append(delimeter)\n    return result\n```\n\n### Explanation:\n- We iterate through each number in the input list.\n- We append the number to the result list.\n- If the result list has more than one element, we append the `delimeter` after the number.\n- This ensures the `delimeter` is inserted between consecutive elements.\n\nLet me know if you want a version that handles edge cases like empty lists or lists with only one element!",
+      "Here's the complete implementation of the `parse_nested_parens` function:\n\n```python\nfrom typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n    result = []\n    groups = paren_string.split()\n    \n    for group in groups:\n        max_depth = 0\n        current_depth = 0\n        \n        for char in group:\n            if char == '(':\n                current_depth += 1\n                if current_depth > max_depth:\n                    max_depth = current_depth\n            elif char == ')':\n                current_depth -= 1\n        \n        result.append(max_depth)\n    \n    return result\n```\n\n### Explanation:\n- The function splits the input string by spaces to get individual groups.\n- For each group, it tracks the maximum depth of parentheses using a counter.\n- It increments the counter when encountering `'('` and decrements it when encountering `')'`.\n- The maximum depth encountered during the traversal is recorded for each group.\n- The result is a list of integers, one for each group, representing the maximum depth of nesting.\n\n### Example:\n```python\nprint(parse_nested_parens('(()()) ((())) () ((())()())'))  # Output: [2, 3, 1, 3]\n```",
+      "Here is the complete implementation of the `filter_by_substring` function:\n\n```python\nfrom typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\"Filter an input list of strings only for ones that contain given substring.\n    \n    Args:\n        strings: A list of strings to be filtered.\n        substring: The substring to search for in each string.\n        \n    Returns:\n        A list of strings from the input that contain the given substring.\n    \"\"\"\n    return [s for s in strings if substring in s]\n```\n\n### Example Usage:\n\n```python\nprint(filter_by_substring([], 'a'))        # Output: []\nprint(filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a'))  # Output: ['abc', 'bacd', 'array']\n```\n\nThis function uses a list comprehension to filter the input list, checking if each string contains the given substring using the `in` operator.",
+      "Here is the complete implementation of the `sum_product` function as requested:\n\n```python\nfrom typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\"For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n    total_sum = 0\n    total_product = 1\n\n    for num in numbers:\n        total_sum += num\n        total_product *= num\n\n    return (total_sum, total_product)\n```\n\n### Explanation:\n- **Sum**: Iterates through the list and accumulates the sum.\n- **Product**: Iterates through the list and accumulates the product.\n- **Edge Case**: If the list is empty, the sum is `0` and the product is `1`, as specified.\n\nYou can use this function in your code to compute the sum and product of a list of integers.",
+      "Here's the complete implementation of the `rolling_max` function:\n\n```python\nfrom typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    \"\"\"From a given list of integers, generate a list of rolling maximum element found until given moment\n    in the sequence.\n    \n    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])\n    [1, 2, 3, 3, 3, 4, 4]\n    \"\"\"\n    if not numbers:\n        return []\n    \n    max_so_far = numbers[0]\n    result = [max_so_far]\n    \n    for i in range(1, len(numbers)):\n        if numbers[i] > max_so_far:\n            max_so_far = numbers[i]\n        result.append(max_so_far)\n    \n    return result\n```\n\n### Explanation:\n- The function starts by checking if the input list is empty and returns an empty list if so.\n- It initializes `max_so_far` with the first element of the list.\n- It then iterates through the list starting from the second element, updating `max_so_far` whenever a larger number is found.\n- The result list is built by appending the current `max_so_far` at each step.\n\n### Example:\n```python\nprint(rolling_max([1, 2, 3, 2, 3, 4, 2]))  # Output: [1, 2, 3, 3, 3, 4, 4]\n```",
+      "Here is the complete implementation of the `make_palindrome` function based on the provided algorithm:\n\n```python\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n    if not string:\n        return string\n\n    # Find the longest palindromic suffix\n    n = len(string)\n    max_len = 0\n    for i in range(n - 1, -1, -1):\n        if is_palindrome(string[i:]):\n            max_len = i + 1  # Length of the palindromic suffix\n\n    # The part before the palindromic suffix is the prefix\n    prefix = string[:n - max_len]\n\n    # Reverse the prefix and append to the string\n    return string + prefix[::-1]\n```\n\n### Explanation:\n- `is_palindrome` checks if a substring is a palindrome.\n- `make_palindrome`:\n  - Finds the longest palindromic suffix of the input string.\n  - Reverses the prefix (the part before the palindromic suffix) and appends it to the end of the string.\n  - This ensures the resulting string is the shortest possible palindrome that begins with the given string.\n\n### Example:\n```python\nprint(make_palindrome('cat'))  # Output: 'catac'\nprint(make_palindrome('cata')) # Output: 'catac'\nprint(make_palindrome(''))     # Output: ''\n```",
+      "Here is the complete implementation of the `string_xor` function:\n\n```python\nfrom typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Perform binary XOR on two strings consisting of 1s and 0s.\n    Returns the result as a string.\n    \"\"\"\n    result = []\n    for i in range(len(a)):\n        # Convert characters to integers for XOR operation\n        x = int(a[i])\n        y = int(b[i])\n        # XOR operation: x ^ y\n        result.append('1' if (x ^ y) else '0')\n    return ''.join(result)\n```\n\n### Example usage:\n```python\nprint(string_xor('010', '110'))  # Output: '100'\n```\n\n### Explanation:\n- The function iterates over each character in the input strings `a` and `b`.\n- It converts each character to an integer (`0` or `1`).\n- It performs the XOR operation (`x ^ y`) and appends `'1'` or `'0'` to the result list based on the result of the XOR.\n- Finally, it joins the list into a string and returns it.",
+      "Here is the complete implementation of the `longest` function as requested:\n\n```python\nfrom typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\"Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\"\"\"\n    if not strings:\n        return None\n    \n    # Find the string with the maximum length\n    max_length = max(len(s) for s in strings)\n    # Find the first string with the maximum length\n    for s in strings:\n        if len(s) == max_length:\n            return s\n```\n\n### Explanation:\n- If the input list is empty, return `None`.\n- Otherwise, find the maximum length of the strings.\n- Iterate through the list and return the first string that matches the maximum length.\n\n### Example Usage:\n```python\nprint(longest(['a', 'b', 'c']))        # Output: 'a'\nprint(longest(['a', 'bb', 'ccc']))     # Output: 'ccc'\nprint(longest([]))                    # Output: None\n```",
+      "Here's the complete implementation of the `greatest_common_divisor` function using the Euclidean algorithm, which is efficient and commonly used for this purpose:\n\n```python\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\"Return the greatest common divisor (GCD) of two integers a and b.\n    \n    Args:\n        a: First integer.\n        b: Second integer.\n        \n    Returns:\n        The greatest common divisor of a and b.\n        \n    Examples:\n        >>> greatest_common_divisor(3, 5)\n        1\n        >>> greatest_common_divisor(25, 15)\n        5\n    \"\"\"\n    # Base case: if b is 0, the GCD is a\n    if b == 0:\n        return a\n    \n    # Recursive case: use the Euclidean algorithm\n    return greatest_common_divisor(b, a % b)\n```\n\n### Explanation:\n- The function uses the **Euclidean algorithm**, which is based on the principle that the GCD of two numbers is the same as the GCD of the smaller number and the remainder when the larger number is divided by the smaller.\n- The base case is when `b == 0`, in which case `a` is the GCD (since any number is divisible by itself).\n- The recursive case reduces the problem to finding the GCD of `b` and `a % b`.\n\nThis implementation is efficient and works well for both positive and negative integers.",
+      "Here's the complete implementation of the `all_prefixes` function:\n\n```python\nfrom typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    \"\"\"Return list of all prefixes from shortest to longest of the input string\n    >>> all_prefixes('abc')\n    ['a', 'ab', 'abc']\n    \"\"\"\n    return [string[:i] for i in range(1, len(string) + 1)]\n```\n\n### Explanation:\n- The function uses a list comprehension to generate all prefixes of the input string.\n- `string[:i]` gives the substring from the start up to (but not including) index `i`.\n- The range `range(1, len(string) + 1)` generates indices from 1 to the length of the string, inclusive.\n- This ensures that all prefixes (from length 1 to the full string) are included.\n\n### Example:\n```python\nprint(all_prefixes('abc'))  # Output: ['a', 'ab', 'abc']\n```",
+      "Here's the complete implementation of the `string_sequence` function:\n\n```python\ndef string_sequence(n: int) -> str:\n    \"\"\"Return a string containing space-delimited numbers starting from 0 up to n inclusive.\n    >>> string_sequence(0)\n    '0'\n    >>> string_sequence(5)\n    '0 1 2 3 4 5'\n    \"\"\"\n    return ' '.join(str(i) for i in range(n + 1))\n```\n\n### Explanation:\n- `range(n + 1)` generates numbers from `0` to `n` inclusive.\n- `str(i)` converts each number to a string.\n- `' '.join(...)` joins them with spaces in between.\n\nThis function works for any non-negative integer `n`.",
+      "Here's the complete implementation of the `count_distinct_characters` function in Python:\n\n```python\ndef count_distinct_characters(string: str) -> int:\n    \"\"\"Given a string, find out how many distinct characters (regardless of case) it consists of.\n    \n    Args:\n        string: A string input.\n        \n    Returns:\n        The number of distinct characters (case-insensitive).\n    \"\"\"\n    # Convert the string to lowercase to make the comparison case-insensitive\n    lower_string = string.lower()\n    \n    # Use a set to store unique characters\n    unique_chars = set(lower_string)\n    \n    # Return the number of unique characters\n    return len(unique_chars)\n```\n\n### Example Usage:\n\n```python\nprint(count_distinct_characters('xyzXYZ'))  # Output: 3\nprint(count_distinct_characters('Jerry'))   # Output: 4\n```\n\nThis function works by converting the input string to lowercase, then using a set to store the characters, which automatically removes duplicates. The length of the set gives the number of distinct characters.",
+      "Here is the complete Python function that parses the given music string and returns a list of integers representing the number of beats each note lasts:\n\n```python\nfrom typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    \"\"\" Parse a string of musical notes into a list of beat counts.\n    \n    Args:\n        music_string: A string containing notes in the format 'o', 'o|', '.|', etc.\n        \n    Returns:\n        A list of integers representing the number of beats each note lasts.\n    \"\"\"\n    notes = music_string.split()\n    result = []\n    \n    for note in notes:\n        if note == 'o':\n            result.append(4)\n        elif note == 'o|':\n            result.append(2)\n        elif note == '.|':\n            result.append(1)\n    \n    return result\n```\n\n### Example Usage:\n```python\nprint(parse_music('o o| .| o| o| .| .| .| .| o o'))\n# Output: [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\n```\n\nThis function splits the input string by spaces and processes each note to determine the number of beats it lasts based on the given legend.",
+      "Here's the complete implementation of the `how_many_times` function in Python. This function counts the number of times a given `substring` appears in a `string`, including overlapping cases.\n\n```python\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\"Find how many times a given substring can be found in the original string. Count overlapping cases.\"\"\"\n    if not substring:\n        return 0  # Handle empty substring case\n    \n    count = 0\n    start = 0\n    while True:\n        # Find the next occurrence of the substring starting from 'start'\n        index = string.find(substring, start)\n        if index == -1:\n            break\n        count += 1\n        start = index + 1  # Move to the next character after the found substring\n    \n    return count\n```\n\n### Example Usage:\n\n```python\nprint(how_many_times('', 'a'))        # Output: 0\nprint(how_many_times('aaa', 'a'))     # Output: 3\nprint(how_many_times('aaaa', 'aa'))   # Output: 3\n```\n\n### Explanation:\n- The function uses `str.find()` to find the next occurrence of the `substring` starting from the current `start` position.\n- It increments the `count` each time a match is found and moves the `start` to the next character after the matched substring to count overlapping cases.\n- If no match is found, the loop breaks and returns the count.",
+      "Here's the complete implementation of the `sort_numbers` function:\n\n```python\nfrom typing import List\n\n\ndef sort_numbers(numbers: str) -> str:\n    \"\"\" Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\n    >>> sort_numbers('three one five')\n    'one three five'\n    \"\"\"\n    # Create a dictionary to map string numbers to their integer values\n    number_to_value = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    \n    # Split the input string into a list of numbers\n    numbers_list = numbers.split()\n    \n    # Sort the list based on the integer values\n    sorted_numbers = sorted(numbers_list, key=lambda x: number_to_value[x])\n    \n    # Join the sorted numbers into a string separated by spaces\n    return ' '.join(sorted_numbers)\n```\n\n### Example Usage:\n```python\nprint(sort_numbers('three one five'))  # Output: 'one three five'\nprint(sort_numbers('nine eight seven six five four three two one zero'))  # Output: 'zero one two three four five six seven eight nine'\n```"
+    ]
+  }
+}

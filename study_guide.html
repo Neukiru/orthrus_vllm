@@ -1,0 +1,995 @@
+<title>Orthrus Field Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+
+<style>
+:root{
+  --paper:#f6f8fa; --surface:#ffffff; --sunken:#eef1f5;
+  --ink:#161a1f; --ink-2:#3d4650; --ink-3:#6b7580;
+  --rule:#d9dee5; --rule-2:#c3cad3;
+  --valid:#2c5d8f;      /* committed / valid KV */
+  --transient:#b0691c;  /* transient draft KV  */
+  --stale:#878e97;      /* stale / rejected    */
+  --trap:#9e3b3b;
+  --valid-wash:#e8eff6; --transient-wash:#faf0e3; --trap-wash:#f8ebeb;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12151a; --surface:#181c22; --sunken:#1e232a;
+    --ink:#e7ebf0; --ink-2:#b3bcc7; --ink-3:#818b96;
+    --rule:#2b323b; --rule-2:#3b434e;
+    --valid:#7bb0e0; --transient:#e0a35c; --stale:#8d949d; --trap:#e08585;
+    --valid-wash:#182634; --transient-wash:#2a2013; --trap-wash:#2c1c1c;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12151a; --surface:#181c22; --sunken:#1e232a;
+  --ink:#e7ebf0; --ink-2:#b3bcc7; --ink-3:#818b96;
+  --rule:#2b323b; --rule-2:#3b434e;
+  --valid:#7bb0e0; --transient:#e0a35c; --stale:#8d949d; --trap:#e08585;
+  --valid-wash:#182634; --transient-wash:#2a2013; --trap-wash:#2c1c1c;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-size:16.5px; line-height:1.62;
+  margin:0; padding:0 24px 96px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:830px;margin:0 auto}
+.measure{max-width:68ch}
+
+h1,h2,h3,h4,.label,.eyebrow,th,.tag{
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+h1{font-size:2.45rem;line-height:1.12;font-weight:700;letter-spacing:-.022em;margin:0 0 .3em;text-wrap:balance}
+h2{font-size:1.55rem;line-height:1.2;font-weight:600;letter-spacing:-.015em;margin:2.6em 0 .1em;text-wrap:balance}
+h3{font-size:1.1rem;line-height:1.3;font-weight:600;letter-spacing:-.005em;margin:2em 0 .4em;text-wrap:balance}
+h4{font-size:.94rem;font-weight:600;margin:1.5em 0 .3em}
+p{margin:0 0 1.05em}
+a{color:var(--valid)}
+
+.eyebrow{
+  font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 .5em
+}
+
+/* ---- title block ---- */
+.titleblock{padding:56px 0 30px;border-bottom:2px solid var(--ink);margin-bottom:12px}
+.subtitle{font-size:1.16rem;color:var(--ink-2);margin:.2em 0 1.3em;max-width:60ch}
+.meta{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.76rem;
+  color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 22px
+}
+
+/* ---- part dividers: these ARE a sequence, so they are numbered ---- */
+.part{
+  margin:4.2em 0 0;padding-top:1.1em;border-top:2px solid var(--ink);
+  display:flex;align-items:baseline;gap:.7em
+}
+.part-num{
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:600;
+  color:var(--valid);letter-spacing:.06em
+}
+.part-title{font-family:"IBM Plex Sans",sans-serif;font-size:1.32rem;font-weight:700;letter-spacing:-.01em}
+
+/* ---- code ---- */
+pre,code,kbd{font-family:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
+code{font-size:.86em;background:var(--sunken);padding:.1em .32em;border-radius:3px;color:var(--ink)}
+pre{
+  background:var(--sunken);border:1px solid var(--rule);
+  padding:14px 16px;overflow-x:auto;font-size:.79rem;line-height:1.58;
+  margin:1.2em 0;border-radius:4px
+}
+pre code{background:none;padding:0;font-size:inherit}
+.cmt{color:var(--ink-3)}
+.hl{color:var(--transient);font-weight:500}
+.hl2{color:var(--valid);font-weight:500}
+
+/* ---- the recurring structural element: every section ends with a check ---- */
+.verify{
+  border-left:3px solid var(--valid);background:var(--valid-wash);
+  padding:14px 18px;margin:1.6em 0;border-radius:0 4px 4px 0
+}
+.verify .label{
+  font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--valid);margin:0 0 .5em
+}
+.verify pre{background:var(--surface);margin:.7em 0 .5em}
+.verify p:last-child,.verify pre:last-child{margin-bottom:0}
+
+.trap{
+  border-left:3px solid var(--trap);background:var(--trap-wash);
+  padding:14px 18px;margin:1.6em 0;border-radius:0 4px 4px 0
+}
+.trap .label{
+  font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--trap);margin:0 0 .5em
+}
+.trap p:last-child{margin-bottom:0}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto;margin:1.4em 0}
+table{border-collapse:collapse;width:100%;font-size:.85rem;
+  font-family:"IBM Plex Sans",sans-serif;font-variant-numeric:tabular-nums}
+th{
+  text-align:left;font-weight:600;font-size:.7rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-3);
+  border-bottom:1.5px solid var(--rule-2);padding:0 12px 7px 0;white-space:nowrap
+}
+td{border-bottom:1px solid var(--rule);padding:7px 12px 7px 0;vertical-align:top}
+td:last-child,th:last-child{padding-right:0}
+tr:last-child td{border-bottom:none}
+.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
+
+ul,ol{margin:0 0 1.05em;padding-left:1.3em}
+li{margin-bottom:.4em}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:italic}
+
+.lede{font-size:1.05rem;color:var(--ink-2)}
+hr{border:none;border-top:1px solid var(--rule);margin:2.4em 0}
+
+.q{margin:1.3em 0;padding-left:1.1em;border-left:2px solid var(--rule-2)}
+.q p{margin:0 0 .5em}
+.q .label{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:.5em;font-family:"IBM Plex Sans",sans-serif}
+
+.toc{background:var(--surface);border:1px solid var(--rule);padding:20px 24px;margin:2em 0;border-radius:4px}
+.toc ul{margin:0;padding:0;list-style:none;font-family:"IBM Plex Sans",sans-serif;font-size:.88rem}
+.toc>ul>li{margin-bottom:.55em;font-weight:600;display:grid;grid-template-columns:3.4em 1fr;gap:.2em}
+.toc ul ul{margin:.3em 0;font-weight:400;grid-column:2;display:block}
+.toc ul ul li{margin-bottom:.18em;color:var(--ink-2);display:list-item;list-style:decimal;margin-left:1.2em}
+.toc a{text-decoration:none;color:inherit}
+.toc a:hover{color:var(--valid)}
+.toc .pn{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--valid);font-weight:600}
+/* keep short identifiers from breaking mid-token in narrow table columns */
+td>code:only-child{white-space:nowrap}
+
+@media print{
+  @page{margin:17mm 16mm}
+  body{background:#fff;color:#000;font-size:10.4pt;padding:0;line-height:1.5}
+  .wrap{max-width:100%}
+  h1{font-size:22pt}h2{font-size:13.5pt;margin-top:1.6em}h3{font-size:11pt}
+  pre{font-size:7.5pt;background:#f2f4f7;page-break-inside:avoid}
+  .part{page-break-before:always;page-break-after:avoid}
+  .titleblock{padding-top:0}
+  .verify,.trap,table{page-break-inside:avoid}
+  h2,h3,h4{page-break-after:avoid}
+  .toc{page-break-after:always}
+  a{color:#000;text-decoration:none}
+}
+</style>
+
+<div class="wrap">
+
+<div class="titleblock">
+  <p class="eyebrow">Study guide &middot; verification-driven</p>
+  <h1>Orthrus Field Manual</h1>
+  <p class="subtitle">Everything you need to understand, defend, and debug a native Orthrus
+  speculative-decoding backend for vLLM &mdash; with a runnable check at the end of every section.</p>
+  <div class="meta">
+    <span>RTX 5090 &middot; sm_120 &middot; WSL2</span>
+    <span>vLLM 0.28.1rc1.dev453+ga1541f574</span>
+    <span>September 2026</span>
+  </div>
+</div>
+
+<p class="lede measure">This manual exists because vLLM's <code>AGENTS.md</code> says
+&ldquo;a human submitter must understand and defend the change end-to-end.&rdquo;
+Every number in it was measured on your machine, not copied from a paper. Where a
+published figure and our measurement disagree, both appear and the discrepancy is
+explained.</p>
+
+<div class="toc">
+<p class="eyebrow" style="margin-bottom:.7em">Contents</p>
+<ul>
+  <li><span class="pn">0</span><a href="#p0">Orientation</a></li>
+  <li><span class="pn">I</span><span><a href="#p1">Why speculative decoding works at all</a>
+    <ul><li>Decode is memory-bound</li><li>Verification is nearly free</li><li>The loop, and why it is exactly lossless</li></ul></span></li>
+  <li><span class="pn">II</span><span><a href="#p2">What Orthrus does</a>
+    <ul><li>Two views, one set of weights</li><li>One cycle, by hand</li><li>The reference loop</li></ul></span></li>
+  <li><span class="pn">III</span><span><a href="#p3">Measuring it without fooling yourself</a>
+    <ul><li>TPF and acceptance length differ by exactly 2&times;</li><li>Averaging convention is worth 8%</li>
+    <li>Sample size: &plusmn;0.4 at n=25</li><li>What hardware can and cannot change</li>
+    <li>80% of an eager pass is overhead</li></ul></span></li>
+  <li><span class="pn">IV</span><a href="#p4">The six vLLM concepts you need</a></li>
+  <li><span class="pn">V</span><span><a href="#p5">Reading the proposer</a>
+    <ul><li>The call order</li><li>The kernel, worked by hand</li><li>Why seq_lens subtracts num_rejected</li></ul></span></li>
+  <li><span class="pn">VI</span><a href="#p6">Building it</a></li>
+  <li><span class="pn">A</span><a href="#pa">Appendix: numbers and commands</a></li>
+</ul>
+</div>
+
+<!-- ============================= PART 0 ============================= -->
+<div class="part" id="p0"><span class="part-num">PART 0</span><span class="part-title">Orientation</span></div>
+
+<h2>The environment</h2>
+<p class="measure">Two virtualenvs, deliberately separate.</p>
+
+<div class="tw"><table>
+<tr><th>Path</th><th>Holds</th><th>Why</th></tr>
+<tr><td><code>.venv</code></td><td>vLLM, editable from <code>vllm/</code></td><td>Our working copy. Edits take effect with no reinstall.</td></tr>
+<tr><td><code>.venv-ref</code></td><td>torch + transformers only</td><td>The <em>numerical oracle</em>. A vLLM dependency bump must never silently change what we validate against.</td></tr>
+</table></div>
+
+<p class="measure">That separation is not fussiness. Steps&nbsp;1 and&nbsp;2 of the implementation
+plan compare vLLM's output against the HuggingFace reference. If the reference lived in
+the same environment, a routine vLLM upgrade could move the oracle underneath you and you
+would never know.</p>
+
+<div class="trap">
+<p class="label">Trap &mdash; namespace shadowing</p>
+<p>The repository root contains a directory called <code>vllm/</code>. Running
+<code>python -c "import vllm"</code> from the project root resolves to that
+<em>directory</em> as an empty namespace package, silently shadowing the install:
+<code>vllm.__file__</code> comes back <code>None</code>. Run from any other working
+directory. Script files are fine, because <code>sys.path[0]</code> is the script's own
+directory, not your shell's.</p>
+</div>
+
+<div class="trap">
+<p class="label">Trap &mdash; WSL2 pinned memory</p>
+<p>Every vLLM engine start fails with <code>RuntimeError: UVA is not available</code>
+unless you set <code>VLLM_WSL2_ENABLE_PIN_MEMORY=1</code>. This is not a bug:
+<code>vllm/platforms/cuda.py</code> disables pinned memory on WSL by default, and the v1
+engine's <code>UvaBuffer</code> hard-requires it. Verified genuinely working here &mdash;
+pinned host-to-device runs 28.0&nbsp;GB/s against 13.7&nbsp;GB/s pageable, so it is real
+pinning and not a silent fallback.</p>
+</div>
+
+<h2>How to use this manual</h2>
+<p class="measure">Every section ends with a <strong>Verify</strong> block: a command to run
+and the number it should produce. Run them. The single most important fact about this
+project is that a broken drafter produces <em>correct output</em> &mdash; so reading code
+until it &ldquo;looks right&rdquo; will not catch your bugs. Only measurement will.</p>
+
+<!-- ============================= PART 1 ============================= -->
+<div class="part" id="p1"><span class="part-num">PART I</span><span class="part-title">Why speculative decoding works at all</span></div>
+
+<h2>1.1&ensp;Decode is memory-bound</h2>
+<p class="measure">A transformer generating text runs in two regimes that look nothing alike
+to the hardware.</p>
+<p class="measure"><strong>Prefill</strong> processes the whole prompt at once. Five hundred
+tokens go in, five hundred positions are computed in parallel. Big matrix multiplies. The
+GPU is compute-bound and happy.</p>
+<p class="measure"><strong>Decode</strong> produces one token at a time, each depending on
+the last. To emit a single token you must stream <em>every weight in the model</em> from
+GPU memory and do a trivial amount of arithmetic with it. The GPU spends almost all its
+time waiting for weights to arrive.</p>
+
+<p class="measure">Put your numbers to it. Orthrus-Qwen3-4B is 4.7B parameters in bfloat16
+= 9.4&nbsp;GB. Your RTX 5090 has about 1.79&nbsp;TB/s of memory bandwidth:</p>
+
+<pre><code>9.4 GB / 1.79 TB/s = 5.3 ms   <span class="cmt">&larr; floor for ONE token</span>
+                              <span class="cmt">   and the arithmetic is nearly free</span></code></pre>
+
+<p class="measure">Now the key observation: <strong>processing 32 tokens in that same
+forward pass costs almost the same 5.3&nbsp;ms.</strong> You stream the weights once either
+way. That is the entire opportunity.</p>
+
+<h2>1.2&ensp;Verification is nearly free</h2>
+<p class="measure">Hand the model a sequence that is already filled in and one forward pass
+returns the next-token distribution at <em>every</em> position, because that is what prefill
+does. So:</p>
+<ul class="measure">
+  <li>Generating K tokens with the target model: <strong>K forward passes.</strong></li>
+  <li>Checking K already-written tokens with the target model: <strong>1 forward pass.</strong></li>
+</ul>
+<p class="measure">If something cheap can propose plausible candidates, you check them in
+bulk and keep the ones that match.</p>
+
+<h2>1.3&ensp;The loop, and why it is exactly lossless</h2>
+<p class="measure">Take &ldquo;The&rdquo; and suppose we want to continue it.</p>
+
+<pre><code><span class="hl2">STEP 1 &mdash; GUESS</span>  (one forward pass of the drafter)
+  in:   [ "The",  MASK,  MASK,  MASK,  MASK ]
+  out:  [        "cat", "sat", "on",  "the", "rug" ]
+
+<span class="hl2">STEP 2 &mdash; CHECK</span>  (one forward pass of the real model)
+  in:   [ "The", "cat", "sat", "on",  "the", "rug" ]
+  real:         "cat"  "sat"  "on"   "the"  "mat"
+
+<span class="hl2">STEP 3 &mdash; COMPARE</span>, left to right, stop at first mismatch
+  "cat" == "cat"   keep
+  "sat" == "sat"   keep
+  "on"  == "on"    keep
+  "the" == "the"   keep
+  "rug" != "mat"   <span class="hl">STOP</span>
+
+  keep 4 guesses + "mat" for free  =  5 tokens for 2 passes</code></pre>
+
+<p class="measure">Everything after the first mismatch is discarded even if it happened to
+be correct. That rule is what makes the scheme exact: <strong>every token emitted is a token
+the real model itself chose</strong>, conditioned on exactly the tokens before it. The
+drafter cannot change <em>what</em> comes out, only <em>how fast</em>.</p>
+
+<div class="trap">
+<p class="label">The consequence that shapes this whole project</p>
+<p><strong>A broken drafter never produces wrong text. It only produces slow text.</strong>
+Correctness lives entirely in the verification step, which is vLLM's existing, already-tested
+rejection sampler. So every bug you introduce will be invisible in the output and will
+show up <em>only</em> as a collapsed acceptance length. There is no crash, no wrong answer,
+no failing assertion &mdash; just a number that is 4 when it should be 7.8.</p>
+</div>
+
+<div class="verify">
+<p class="label">Verify</p>
+<pre><code>.venv-ref/bin/python bench/bench_eager.py --max-new-tokens 256</code></pre>
+<p>Expect three configurations and two invariants. <code>orthrus-diff</code> should be
+roughly twice <code>orthrus-ar</code>. Invariant&nbsp;I1 (Orthrus's AR view equals stock
+Qwen3) should pass 12/12. Invariant&nbsp;I2 will <em>fail</em> in bf16 &mdash; that is
+expected and explained in &sect;3.4.</p>
+</div>
+
+<!-- ============================= PART 2 ============================= -->
+<div class="part" id="p2"><span class="part-num">PART II</span><span class="part-title">What Orthrus does</span></div>
+
+<h2>2.1&ensp;Two views, one set of weights</h2>
+<p class="measure">Orthrus takes a frozen Qwen3 and adds, inside <em>every</em> transformer
+layer, a second set of attention projections. Everything else &mdash; embeddings, layer
+norms, MLPs, final norm, LM head &mdash; is shared and frozen.</p>
+
+<div class="tw"><table>
+<tr><th>View</th><th>Role</th><th>Cache behaviour</th></tr>
+<tr><td><strong>AR</strong></td><td>Ordinary Qwen3 forward. Prefill and verification.</td><td>Reads and writes as usual.</td></tr>
+<tr><td><strong>Diffusion</strong></td><td>Takes K positions &mdash; anchor plus K&minus;1 masks &mdash; and predicts all K&minus;1 future tokens in one pass.</td><td>Reads the AR cache. Writes nothing permanent.</td></tr>
+</table></div>
+
+<p class="measure">Verified against the checkpoint itself: the extra parameters are six
+tensors per layer &mdash; <code>q_proj_diff</code>, <code>k_proj_diff</code>,
+<code>v_proj_diff</code>, <code>o_proj_diff</code>, <code>q_norm_diff</code>,
+<code>k_norm_diff</code> &mdash; totalling <strong>17.0%</strong> of the model. They are
+full-rank <code>nn.Linear</code>; the <code>r: 16</code> and <code>lora_alpha: 32</code>
+fields in <code>config.json</code> are dead leftovers from training that nothing reads.</p>
+
+<p class="measure">The diffusion view's queries attend to the AR cache <em>and</em> to the
+block's own keys and values, bidirectionally within the block. At inference there is no
+structured mask at all: every block query sees every context position and every block
+position. That is plain dense non-causal attention, which is why the FlashAttention backend
+is the right target and FlexAttention (which exists for arbitrary sparse masks) is not.</p>
+
+<h2>2.2&ensp;One cycle, by hand</h2>
+<p class="measure">The cache holds committed tokens up to position <em>t</em>&minus;1.</p>
+
+<pre><code>positions:   0 ................ t-1 | t ......... t+K-1
+             <span class="hl2">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</span> | (reserved)     <span class="cmt">scheduler pre-allocated K slots</span>
+
+(a) DIFFUSION PASS   queries = the K-block
+    reads   <span class="hl2">0 .. t-1</span>   (valid target K/V)
+    writes  <span class="hl">t .. t+K-1</span>  (transient draft K/V)
+
+(b) AR VERIFY PASS   over the K proposed tokens
+    overwrites <span class="hl2">t .. t+K-1</span> with real target K/V
+
+(c) CONSENSUS accepts 2
+    cache is NOT cropped. seq_len is set to t+2.
+    positions t+2 .. t+K-1 still hold real bytes &mdash; they are simply
+    <span class="cmt">beyond seq_len and therefore invisible.</span></code></pre>
+
+<p class="measure">Two things follow, and both matter later. First, the slots the diffusion
+pass borrows are <em>exactly</em> the slots the verification pass is about to fill anyway
+&mdash; that is why Orthrus needs no extra cache memory. Second, rejected tokens are never
+erased; they are hidden by moving a length marker. Remember that.</p>
+
+<h2>2.3&ensp;The reference loop</h2>
+<p class="measure">Read <code>ref_peek/modeling_orthrus.py</code> lines 460&ndash;532 with
+this in front of you. The invariant the loop maintains is:</p>
+
+<pre><code>cache length == start_idx        <span class="cmt">and output_ids[start_idx] is the</span>
+                                 <span class="cmt">uncached anchor for the next block</span></code></pre>
+
+<p class="measure">Per cycle it builds <code>[anchor, MASK &times; (K-1)]</code> at positions
+<code>start_idx .. start_idx+K-1</code>, runs the diffusion pass with
+<code>use_cache=False</code> and <code>ar_seq_len=start_idx</code>, runs the AR pass with
+<code>use_cache=True</code>, compares, then calls <code>cache.crop(start_idx)</code>.</p>
+
+<div class="trap">
+<p class="label">Trap &mdash; the reference is batch-1 only</p>
+<p><code>OrthrusLM.forward</code> accepts <code>attention_mask</code> but never passes it to
+<code>self.model</code>. Any padded batch silently attends to pad tokens. Fine as an oracle,
+useless for batched comparisons. Also: <code>generation_config.json</code> sets
+<code>use_cache: false</code>, so AR generation must pass <code>use_cache=True</code>
+explicitly or every step recomputes the whole prefix.</p>
+</div>
+
+<div class="verify">
+<p class="label">Verify</p>
+<pre><code>.venv-ref/bin/python bench/compare_weights.py</code></pre>
+<p>Expect <strong>310/310 tensors bit-identical</strong> to stock Qwen3-1.7B, and the
+<code>*_diff</code> parameters at 17.0% of the total. The one apparent gap &mdash; Qwen3
+storing a redundant tied <code>lm_head.weight</code> &mdash; equals Orthrus's
+<code>embed_tokens</code>, so it is not a real difference.</p>
+</div>
+
+<!-- ============================= PART 3 ============================= -->
+<div class="part" id="p3"><span class="part-num">PART III</span><span class="part-title">Measuring it without fooling yourself</span></div>
+
+<p class="lede measure">This part is longer than it looks like it should be. Every trap in
+it cost real time to find, and each one produces a plausible-looking wrong number rather
+than an error.</p>
+
+<h2>3.1&ensp;TPF and acceptance length differ by exactly 2&times;</h2>
+
+<p class="measure"><strong>TPF</strong> &mdash; tokens per forward pass, the Orthrus paper's
+Equation&nbsp;9 and Table&nbsp;1 &mdash; is generated tokens divided by <em>all</em> forward
+passes. Plain autoregressive decoding is TPF&nbsp;1.0 by definition. An Orthrus cycle is
+two passes, so:</p>
+
+<pre><code>TPF = tokens_per_cycle / 2</code></pre>
+
+<p class="measure"><strong>Acceptance length</strong> &mdash; the Orthrus paper's Figure&nbsp;4,
+the DFlash paper's Table&nbsp;1, and vLLM's <code>vllm:spec_decode_*</code> metric &mdash; is
+accepted tokens per <em>verification</em> pass, which equals tokens per cycle, roughly
+2&nbsp;&times;&nbsp;TPF.</p>
+
+<div class="trap">
+<p class="label">Trap</p>
+<p>Same run, two numbers, differing by exactly 2. Compare against Table&nbsp;1 using TPF;
+compare against Figure&nbsp;4 and vLLM's metric using tokens per cycle. Mixing them is a
+silent 2&times; error in either direction.</p>
+</div>
+
+<p class="measure">In vLLM the metric is defined in
+<code>tests/v1/e2e/spec_decode/utils.py</code> as
+<code>1 + accepted/drafts</code> &mdash; the <code>+1</code> is the bonus token the target
+samples after the last accepted draft.</p>
+
+<h2>3.2&ensp;Averaging convention is worth 8%</h2>
+<p class="measure">Two questions, invented for clarity:</p>
+
+<pre><code>Question A &mdash; short answer:  10 tokens,  2 passes  &rarr; TPF 5.0
+Question B &mdash; long answer:   90 tokens, 45 passes  &rarr; TPF 2.0
+
+equal-weighted   (5.0 + 2.0) / 2   = <span class="hl2">3.50</span>
+token-weighted   100 / 47          = <span class="hl">2.13</span></code></pre>
+
+<p class="measure">Same data. In the token-weighted version, question B supplies 90 of the
+100 tokens and drowns out question A. And long answers systematically score lower, so the
+token-weighted mean always comes out lower.</p>
+
+<p class="measure">Measured on 200 real GSM8K questions with Orthrus-Qwen3-1.7B:</p>
+
+<div class="tw"><table>
+<tr><th>Convention</th><th class="num">TPF</th><th>Against paper's 4.20</th></tr>
+<tr><td>Equal-weighted (per question)</td><td class="num">4.18</td><td>matches to <strong>0.4%</strong></td></tr>
+<tr><td>Token-weighted (pooled)</td><td class="num">3.88</td><td>8% low</td></tr>
+</table></div>
+
+<p class="measure">The papers' figures line up with the equal-weighted convention. Report
+both or the comparison looks broken for no reason.</p>
+
+<h2>3.3&ensp;Sample size: &plusmn;0.4 at n=25</h2>
+<p class="measure">Per-question TPF at 1.7B has mean 4.18 but <strong>standard deviation
+1.10</strong>, ranging from 2.13 to 7.82. Some questions are easy to predict; some are not.</p>
+
+<pre><code>bootstrap, 4000 draws of 25 questions from our 200:
+    95% CI = [<span class="hl">3.52</span>, <span class="hl">4.31</span>]        &plusmn;0.4 wide</code></pre>
+
+<p class="measure">Our first 25-question run returned 3.78 against the paper's 4.20. That
+was never statistically distinguishable from agreement. <strong>Use &ge;100 questions</strong>
+for any claim about matching a paper.</p>
+
+<div class="q">
+<p class="label">The tell</p>
+<p>GSM8K came in <em>below</em> the paper; HumanEval came in <em>above</em>. A systematic
+cause &mdash; different hardware, a broken checkpoint &mdash; pushes both the same
+direction. Random scatter pushes them in random directions. When your errors change sign,
+suspect noise before you suspect a cause.</p>
+</div>
+
+<h2>3.4&ensp;What hardware can and cannot change</h2>
+<p class="measure">TPF is a pure count. There is no time in the formula. Whether a guess is
+accepted is decided by <code>"cat" == "cat"</code> &mdash; arithmetic on fixed weights
+against fixed input. An H100 and an RTX 5090 compute the same argmax.</p>
+
+<p class="measure">We proved this empirically rather than asserting it. DFlash on Qwen3-4B,
+the same 200 prompts, in two completely different frameworks:</p>
+
+<div class="tw"><table>
+<tr><th>Harness</th><th class="num">Acceptance length</th><th class="num">tok/s</th></tr>
+<tr><td>HuggingFace eager</td><td class="num">5.902</td><td class="num">220.2</td></tr>
+<tr><td>vLLM, CUDA graphs on</td><td class="num">5.921</td><td class="num">680.4</td></tr>
+</table></div>
+
+<p class="measure"><strong>0.3% apart on acceptance; 3.1&times; apart on throughput.</strong>
+Different kernels, different attention backend, graphs on versus off. That is the licence
+for everything else in this manual: acceptance length measures the <em>algorithm</em>,
+tokens per second measures the <em>implementation</em>.</p>
+
+<p class="measure">The one way hardware leaks in is floating-point non-determinism, and it is
+small. Which brings us to:</p>
+
+<div class="trap">
+<p class="label">Trap &mdash; the lossless test cannot pass in bf16</p>
+<p>At temperature 0 the consensus rule is exact greedy prefix matching, so diffusion output
+<em>must</em> equal AR-only output. Measured: <strong>fp32 12/12 identical, bf16 7/12.</strong>
+Not a bug. Verification evaluates K=32 positions in one GEMM while the AR baseline does one
+position per GEMM; different reduction shapes round differently and flip the argmax at
+near-ties. The implementation guide states the Step&nbsp;2 criterion as
+&ldquo;byte-identical&rdquo; in bf16 &mdash; taken literally, <strong>that test fails on
+correct code.</strong> Run the strict assertion in fp32; in bf16 assert a high match
+<em>rate</em>.</p>
+</div>
+
+<h2>3.5&ensp;Eighty percent of an eager pass is overhead</h2>
+<p class="measure">Why is Orthrus-4B only 11% slower than Orthrus-1.7B when it has 2.3&times;
+the weights? Decompose the measured per-pass times against 1.79&nbsp;TB/s:</p>
+
+<div class="tw"><table>
+<tr><th>Model</th><th class="num">ms/pass</th><th class="num">Weight streaming</th><th class="num">Remainder</th><th>Fits</th></tr>
+<tr><td>Orthrus-1.7B</td><td class="num">15.5</td><td class="num">4.15 GB &rarr; 2.3</td><td class="num">13.2</td><td>28 layers &times; 0.47 ms</td></tr>
+<tr><td>Orthrus-4B</td><td class="num">22.2</td><td class="num">9.40 GB &rarr; 5.3</td><td class="num">16.9</td><td>36 layers &times; 0.47 ms</td></tr>
+</table></div>
+
+<p class="measure">Both land on <strong>~0.47&nbsp;ms of overhead per layer</strong>. In
+HuggingFace eager the model barely matters; the layer count does. Three consequences:</p>
+
+<ul class="measure">
+  <li>The 4B looks cheap. It is not &mdash; the measurement is hiding its cost.</li>
+  <li>A 5-layer drafter is not 7&times; cheaper in wall-clock, because it still pays
+  per-layer overhead.</li>
+  <li><strong>Eager systematically flatters both larger models and full-depth drafters
+  &mdash; that is, it flatters Orthrus.</strong> Expect rankings to move in vLLM.</li>
+</ul>
+
+<div class="trap">
+<p class="label">Trap &mdash; never compare tok/s across tasks</p>
+<p>Orthrus-1.7B does 250.7&nbsp;tok/s on GSM8K but 149.5&nbsp;tok/s on a mixed prompt set
+containing prose. That is the prompt mix, not the model. Comparing the 1.7B's mixed-set
+number against the 4B's GSM8K number makes the larger model look faster, which it is not.</p>
+</div>
+
+<div class="verify">
+<p class="label">Verify</p>
+<pre><code>.venv-ref/bin/python bench/bench_eager.py --task gsm8k --num-prompts 200 \
+    --max-new-tokens 512 --only orthrus-diff</code></pre>
+<p>Expect TPF <strong>3.88</strong> token-weighted, <strong>4.18</strong> per-question,
+acceptance length <strong>7.75</strong>, around 250&nbsp;tok/s. Then run
+<code>--dtype fp32 --only orthrus-ar,orthrus-diff</code> and watch invariant I2 flip from
+7/12 to 12/12.</p>
+</div>
+
+<!-- ============================= PART 4 ============================= -->
+<div class="part" id="p4"><span class="part-num">PART IV</span><span class="part-title">The six vLLM concepts you need</span></div>
+
+<h3>1. Paged KV cache, block table, slot mapping</h3>
+<p class="measure">vLLM does not give each request a contiguous cache. Memory is divided
+into fixed-size <strong>blocks</strong> (16 tokens each) handed out on demand, like virtual
+memory pages. Each request has a <strong>block table</strong>: which physical blocks hold
+its tokens, in order. A <strong>slot</strong> is one token's position in one block, and the
+<strong>slot mapping</strong> says, for each input token, which physical slot its key and
+value get written to.</p>
+<pre><code>slot = block_table[req][position // 16] * 16 + (position % 16)</code></pre>
+<p class="measure">Everything about correctness in Part&nbsp;V comes down to computing that
+line right.</p>
+
+<h3>2. Scheduler</h3>
+<p class="measure">Decides each step which requests run and allocates their blocks. With
+speculative decoding on, it pre-allocates <code>num_speculative_tokens</code> of lookahead
+per request <em>before</em> the drafter runs &mdash; which is the only reason the diffusion
+pass has slots to borrow. For Orthrus that is <strong>31</strong>, far above the 3&ndash;8
+most drafters use; <code>vllm/config/speculative.py</code> documents DFlash as needing
+<code>K</code> additional slots.</p>
+
+<h3>3. Model runner</h3>
+<p class="measure">The GPU-side loop. Each step: build inputs, run the target, sample and
+verify, then call the drafter's <code>propose()</code> to produce drafts for the
+<em>next</em> step. That ordering is what makes Orthrus safe &mdash; the transient draft
+K/V written at step <em>n</em> is overwritten by verification at step <em>n</em>+1, before
+anything else reads those slots.</p>
+
+<h3>4. Attention layer, backend, metadata</h3>
+<p class="measure">A vLLM <code>Attention</code> module owns no weights. It is a thin op
+that (i) looks up its KV-cache tensor <em>by layer name</em>, (ii) writes incoming k,v to
+the slots in the forward context, and (iii) calls a backend with the metadata there.</p>
+<div class="trap">
+<p class="label">This is the crux of the whole design</p>
+<p>Calling the <em>same</em> <code>self.attn</code> module from both the AR path and the
+diffusion path means the same layer name, which means the same cache tensor &mdash; so the
+diffusion view gets the target's context K/V without copying a byte. Create a second
+<code>Attention</code> module per layer instead and vLLM registers it as a new attention
+layer, allocates it its own cache, and the entire memory argument for Orthrus evaporates.</p>
+</div>
+
+<h3>5. Forward context</h3>
+<p class="measure">A thread-local bag set for the duration of one forward, via
+<code>set_forward_context(...)</code>. It carries attention metadata and slot mappings, and
+any code inside the forward can read it. Drafters build their own for their own passes.</p>
+
+<h3>6. CUDA graphs</h3>
+<p class="measure">Launching hundreds of small kernels per decode step has overhead, so
+vLLM captures a step as a graph and replays it. Consequences for us: buffers the graph
+reads must live at <strong>stable addresses</strong>, and shapes must be padded to captured
+sizes. Get everything correct with <code>enforce_eager=True</code> first and add graph
+support last.</p>
+
+<div class="verify">
+<p class="label">Verify</p>
+<pre><code>cd /tmp &amp;&amp; VLLM_WSL2_ENABLE_PIN_MEMORY=1 \
+  /home/neukiru/workspace/orthrus_vllm/.venv/bin/python -c "
+from vllm import LLM, SamplingParams
+llm = LLM(model='Qwen/Qwen3-1.7B', max_model_len=1024, max_num_seqs=1,
+          gpu_memory_utilization=0.25)
+print(llm.generate(['The capital of France is'],
+      SamplingParams(temperature=0, max_tokens=8))[0].outputs[0].text)"</code></pre>
+<p>Expect &ldquo;&nbsp;Paris.&nbsp;&hellip;&rdquo; and, in the log, a line reading
+<code>GPU KV cache size: N tokens</code> &mdash; that is the paged allocator reporting how
+many slots it carved out.</p>
+</div>
+
+<!-- ============================= PART 5 ============================= -->
+<div class="part" id="p5"><span class="part-num">PART V</span><span class="part-title">Reading the proposer</span></div>
+
+<h2>5.1&ensp;The call order</h2>
+<p class="measure">The generic loop lives in
+<code>vllm/v1/spec_decode/llm_base_proposer.py</code> (1901 lines &mdash; you do not touch
+it). <code>vllm/v1/spec_decode/dflash.py</code> is 317 lines of overrides, and is the file
+our Orthrus proposer will most resemble.</p>
+
+<pre><code>propose(target_token_ids, target_positions, next_token_ids,
+        cad, num_rejected_tokens_gpu, ...)
+  |
+  +- <span class="hl2">set_inputs_first_pass(...)</span>          &larr; the block + metadata  [THE BIG ONE]
+  +- build_per_group_and_layer_attn_metadata  &larr; forces non-causal
+  +- build_model_inputs_first_pass(...)
+  +- with set_forward_context(...): self.model(**kwargs)
+  +- sample_hidden_states = last_hidden_states[token_indices_to_sample]
+  +- _sample_draft_tokens(...)  &rarr;  draft_token_ids</code></pre>
+
+<p class="measure">At <code>llm_base_proposer.py:627</code>,
+<code>if self.num_speculative_tokens == 1 or self.parallel_drafting:</code> returns straight
+after one forward. Both DFlash and Orthrus set <code>parallel_drafting</code>, so there is a
+single draft pass and no loop &mdash; matching the Orthrus paper's Table&nbsp;3 ablation,
+which found single-step projection beats multi-step (TPF 6.35 against 3.53).</p>
+
+<h2>5.2&ensp;The kernel, worked by hand</h2>
+<p class="measure">This is the checkpoint the implementation guide sets, so do it with real
+numbers &mdash; and with <strong>two requests of different lengths</strong>, because a
+single-request trace hides the two subtlest things in the kernel.</p>
+
+<p class="measure">Take <code>num_speculative_tokens = 4</code>, so
+<code>num_query_per_req = 5</code>, and KV page size 16. Both requests were drafted for last
+step; the target has just finished verifying.</p>
+
+<ul class="measure">
+  <li><strong>Request 0</strong> had 10 committed tokens (positions 0&ndash;9). The target
+  verified 5 query tokens at positions 10&ndash;14. Consensus accepted <strong>2</strong>
+  drafts, so 3 tokens commit (10, 11, 12) and <strong>2 are rejected</strong> (13, 14).</li>
+  <li><strong>Request 1</strong> had 30 committed tokens (positions 0&ndash;29). The target
+  verified 5 query tokens at positions 30&ndash;34. Consensus accepted <strong>nothing</strong>,
+  so only 1 token commits (30) and <strong>4 are rejected</strong> (31&ndash;34).</li>
+</ul>
+
+<pre><code><span class="cmt">inputs to copy_and_expand_dflash_inputs_kernel</span>
+query_start_loc     = [0, 5, 10]                        <span class="cmt">request boundaries</span>
+target_positions    = [10,11,12,13,14, 30,31,32,33,34]  <span class="cmt">flattened, ragged</span>
+num_rejected_tokens = [2, 4]
+next_token_ids      = [B0, B1]
+cad.seq_lens        = [15, 35]
+total_input_tokens  = 10
+block_table_stride  = 8
+
+block_table[0] = [42, 57, ...]      <span class="cmt">req 0: pos 0-15 &rarr; blk 42, 16-31 &rarr; blk 57</span>
+block_table[1] = [11, 23, 88, ...]  <span class="cmt">req 1: 0-15 &rarr; 11, 16-31 &rarr; 23, 32-47 &rarr; 88</span></code></pre>
+
+<h4>The launch grid</h4>
+<pre><code>max_ctx_per_req    = cad.max_query_len          = 5
+max_tokens_per_req = 5 + 5                      = 10
+BLOCK_SIZE         = min(256, next_power_of_2(10)) = 16
+num_blocks         = ceil(10 / 16)              = 1
+grid               = (batch_size=2, 1)          <span class="cmt">two programs, one per request</span></code></pre>
+
+<p class="measure">Each program walks one request's context <em>and</em> query tokens under
+a single flat index <code>j</code>:</p>
+
+<pre><code>j:          0    1    2    3    4  |  5    6    7    8    9  | 10 .. 15
+          &#9492;&#9472;&#9472;&#9472; is_ctx (j &lt; 5) &#9472;&#9472;&#9472;&#9496; &#9492;&#9472;&#9472;&#9472; is_query &#9472;&#9472;&#9472;&#9472;&#9496;  &#9492; out of bounds &#9496;
+query_off:                            0    1    2    3    4</code></pre>
+
+<h3>Request 0 &mdash; <code>req_idx = 0</code></h3>
+<pre><code>ctx_start = query_start_loc[0] = 0
+ctx_end   = query_start_loc[1] = 5
+num_ctx   = 5
+
+<span class="cmt">the three pivotal lines, utils.py:520-526</span>
+num_rejected  = 2
+valid_ctx_end = ctx_end - num_rejected   = 5 - 2 = <span class="hl">3</span>
+last_pos      = target_positions[3-1] = target_positions[2] = <span class="hl">12</span>
+query_pos     = 12 + 1 + query_off       = 13,14,15,16,17</code></pre>
+
+<p class="measure">It stepped <em>back over</em> positions 13 and 14 &mdash; the rejected
+ones &mdash; and resumed from 12.</p>
+
+<pre><code><span class="cmt">context, j = 0..4</span>
+ctx_pos_idx = min(ctx_start + j, 9) = 0,1,2,3,4
+ctx_pos     = target_positions[0..4] = 10,11,12,13,14
+ctx_pos_out = ctx_start + j          =  0,1,2,3,4
+
+<span class="cmt">query, j = 5..9  (query_off = 0..4)</span>
+query_out   = req_idx*5 + query_off  =  0,1,2,3,4
+query_pos   = 13,14,15,16,17
+
+<span class="cmt">slot mapping: positions = where(is_ctx, ctx_pos, query_pos)</span>
+context  pos 10 &rarr; 10//16=0 &rarr; blk 42 &rarr; 42*16+10 = 682
+         pos 11 &rarr; 683    pos 12 &rarr; 684
+         pos 13 &rarr; 685    pos 14 &rarr; 686
+query    pos 13 &rarr; blk 42 &rarr; 685      <span class="hl">&larr; same slot as context</span>
+         pos 14 &rarr; 686                <span class="hl">&larr; same slot as context</span>
+         pos 15 &rarr; 687
+         pos 16 &rarr; 16//16=1 &rarr; blk 57 &rarr; 57*16+0 = 912   <span class="hl">&larr; PAGE BOUNDARY</span>
+         pos 17 &rarr; 913
+
+<span class="cmt">input ids and sample indices</span>
+is_bonus       = is_query &amp; (query_off == 0)  &rarr; only j=5
+out_input_ids[0..4]     = [B0, M, M, M, M]
+sample_out_idx = 0*4 + (query_off-1) = 0,1,2,3
+value          = query_out           = 1,2,3,4</code></pre>
+
+<h3>Request 1 &mdash; <code>req_idx = 1</code></h3>
+<pre><code>ctx_start = query_start_loc[1] = <span class="hl">5</span>        <span class="cmt">not 0</span>
+ctx_end   = query_start_loc[2] = 10
+
+num_rejected  = 4
+valid_ctx_end = 10 - 4 = 6
+last_pos      = target_positions[6-1] = target_positions[<span class="hl">5</span>] = 30
+query_pos     = 31,32,33,34,35
+
+<span class="cmt">context, j = 0..4</span>
+ctx_pos_idx = min(5 + j, 9)          = 5,6,7,8,9
+ctx_pos     = target_positions[5..9] = 30,31,32,33,34
+ctx_pos_out = 5 + j                  = 5,6,7,8,9      <span class="cmt">offset by ctx_start</span>
+
+<span class="cmt">query, j = 5..9</span>
+query_out   = 1*5 + query_off        = 5,6,7,8,9      <span class="cmt">offset by req_idx*5</span>
+query_pos   = 31,32,33,34,35
+
+<span class="cmt">slots &mdash; this request straddles two page boundaries</span>
+context  pos 30 &rarr; 30//16=1 &rarr; blk 23 &rarr; 23*16+14 = 382
+         pos 31 &rarr; 383
+         pos 32 &rarr; 32//16=2 &rarr; blk 88 &rarr; 88*16+0 = 1408
+         pos 33 &rarr; 1409    pos 34 &rarr; 1410
+query    pos 31 &rarr; 383     pos 32 &rarr; 1408    pos 33 &rarr; 1409
+         pos 34 &rarr; 1410    pos 35 &rarr; 1411</code></pre>
+
+<h3>The two things one request would have hidden</h3>
+
+<p class="measure"><strong>1. The context and query buffers use different indexing
+schemes.</strong></p>
+<pre><code>context:  ctx_pos_out = ctx_start + j            <span class="cmt">ragged, follows the target's flat layout</span>
+query:    query_out   = req_idx * 5 + query_off  <span class="cmt">uniform, fixed stride</span></code></pre>
+<p class="measure">Context is ragged because requests contribute different numbers of
+tokens to the target's pass. Queries are uniform because <em>every</em> request always gets
+exactly <code>1 + num_speculative_tokens</code> of them. That is why
+<code>new_query_start_loc</code> is simply <code>arange * num_query_per_req</code> &mdash;
+regular by construction.</p>
+
+<p class="measure"><strong>2. <code>last_pos</code> is read at a per-request offset.</strong>
+For request&nbsp;1 it is <code>target_positions[5]</code>, not <code>[0]</code>.
+<code>valid_ctx_end</code> indexes the <em>flattened</em> array, which is why it is computed
+from <code>ctx_end</code> and not from <code>num_ctx</code>.</p>
+
+<h3>Final buffer contents</h3>
+<div class="tw"><table>
+<tr><th>index</th><th class="num">0</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th><th class="num">6</th><th class="num">7</th><th class="num">8</th><th class="num">9</th></tr>
+<tr><td><code>out_context_positions</code></td><td class="num">10</td><td class="num">11</td><td class="num">12</td><td class="num">13</td><td class="num">14</td><td class="num">30</td><td class="num">31</td><td class="num">32</td><td class="num">33</td><td class="num">34</td></tr>
+<tr><td><code>out_context_slot_mapping</code></td><td class="num">682</td><td class="num">683</td><td class="num">684</td><td class="num">685</td><td class="num">686</td><td class="num">382</td><td class="num">383</td><td class="num">1408</td><td class="num">1409</td><td class="num">1410</td></tr>
+<tr><td><code>out_query_positions</code></td><td class="num">13</td><td class="num">14</td><td class="num">15</td><td class="num">16</td><td class="num">17</td><td class="num">31</td><td class="num">32</td><td class="num">33</td><td class="num">34</td><td class="num">35</td></tr>
+<tr><td><code>out_query_slot_mapping</code></td><td class="num">685</td><td class="num">686</td><td class="num">687</td><td class="num">912</td><td class="num">913</td><td class="num">383</td><td class="num">1408</td><td class="num">1409</td><td class="num">1410</td><td class="num">1411</td></tr>
+<tr><td><code>out_input_ids</code></td><td class="num">B0</td><td class="num">M</td><td class="num">M</td><td class="num">M</td><td class="num">M</td><td class="num">B1</td><td class="num">M</td><td class="num">M</td><td class="num">M</td><td class="num">M</td></tr>
+<tr><td><code>out_token_indices</code> <span style="font-size:.8em">(len 8)</span></td><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num">6</td><td class="num">7</td><td class="num">8</td><td class="num">9</td><td></td><td></td></tr>
+</table></div>
+
+<p class="measure">Two details worth pausing on. <strong>The slot mapping crosses page
+boundaries by itself</strong> &mdash; request&nbsp;0's positions 16&ndash;17 land in a
+different physical block, request&nbsp;1's cross twice &mdash; so the kernel does a real
+block-table lookup per position rather than assuming contiguity. Do not
+&ldquo;simplify&rdquo; it; if a computed slot ever falls outside the request's block table
+you silently corrupt another request's cache.</p>
+
+<p class="measure">And <strong>query slots overlap context slots</strong>: 685 and 686
+appear in both of request&nbsp;0's lists. Those positions hold rejected K/V; the query pass
+overwrites them with the anchor's real K/V. Self-correcting, and the reason the kernel does
+not bother branching around rejected tokens when writing context.</p>
+
+<h2>5.3&ensp;Why seq_lens subtracts num_rejected</h2>
+
+<p class="measure">Continuing the same two-request example:</p>
+
+<pre><code>num_query_total     = 2 * 5 = 10
+new_query_start_loc = arange[0..2] * 5 = [0, 5, 10]
+
+effective_seq_lens  = cad.seq_lens - num_rejected_tokens_gpu
+                    = [15, 35] - [2, 4]   =  [13, 31]
+new_cad.seq_lens    = [13, 31] + 5        =  [<span class="hl2">18</span>, <span class="hl2">36</span>]
+
+<span class="cmt">check both</span>
+req 0:  13 context (0..12) + 5 query (13..17) = 18   &#10003;
+req 1:  31 context (0..30) + 5 query (31..35) = 36   &#10003;</code></pre>
+
+<p class="measure">Recall from &sect;2.2: <strong>vLLM never erases rejected tokens.</strong>
+They sit in the cache holding real, target-computed K/V. What makes them &ldquo;gone&rdquo;
+is purely that <code>seq_len</code> no longer reaches them.</p>
+
+<div class="trap">
+<p class="label">Trap &mdash; the single most likely cause of a failed lossless test</p>
+<p>Forget the subtraction and you get:</p>
+<pre><code>req 0:  15 + 5 = 20   &rarr; context becomes 0..14, including rejected 13,14
+req 1:  35 + 5 = 40   &rarr; context becomes 0..34, including rejected 31,32,33,34</code></pre>
+<p>Request&nbsp;1 is the vivid case: it accepted <em>nothing</em>, so four of its five
+context tokens are garbage. <strong>The drafter would condition on tokens the target
+explicitly threw away.</strong> And per &sect;1.3, the output stays perfect &mdash;
+verification catches every bad draft. You would see acceptance length quietly fall from 7.8
+to around 4, and a &ldquo;why is this slower than the paper&rdquo; that looks like a
+hardware or configuration problem. This is exactly why the target numbers in &sect;3 were
+pinned down before any code was written.</p>
+</div>
+
+<div class="verify">
+<p class="label">Verify &mdash; answer these from memory</p>
+<p>1. What does each of the six output buffers hold, and why does
+<code>out_token_indices_to_sample</code> start at 1 rather than 0?<br>
+2. Why can a request's query slots be non-contiguous?<br>
+3. If you deleted the <code>- num_rejected</code>, what would the <em>test output</em> look
+like &mdash; and what would the metric do?</p>
+<p>If you can answer these you have cleared the guide's Step&nbsp;0 checkpoint.</p>
+</div>
+
+<!-- ============================= PART 6 ============================= -->
+<div class="part" id="p6"><span class="part-num">PART VI</span><span class="part-title">Building it</span></div>
+
+<h2>6.1&ensp;The diff against DFlash</h2>
+<p class="measure">Orthrus's config gives <code>block_size = 32</code>, so
+<code>num_query_per_req = 32</code> = 1 anchor + 31 masks. The kernel's
+<code>[bonus, MASK&times;n]</code> layout <em>is</em> Orthrus's
+<code>[anchor, MASK&times;(K-1)]</code>: the guide's glossary confirms the bonus token is
+the anchor.</p>
+
+<div class="tw"><table>
+<tr><th>In <code>dflash.py</code></th><th>For Orthrus</th></tr>
+<tr><td><code>pass_hidden_states_to_model=True</code></td><td><code>False</code> &mdash; we feed token ids</td></tr>
+<tr><td><code>precompute_and_store_context_kv(...)</code>, 2 sites</td><td><strong>delete</strong> &mdash; context K/V is already in the target's cache</td></tr>
+<tr><td><code>_context_positions_buffer</code>, <code>_context_slot_mapping_buffer</code></td><td><strong>delete</strong></td></tr>
+<tr><td><code>combine_hidden_states</code> path</td><td>not applicable</td></tr>
+<tr><td><code>_get_model()</code> &rarr; separate draft model</td><td>return <code>self.runner.model</code></td></tr>
+<tr><td>draft KV cache registered</td><td>none &mdash; <code>draft_attn_layer_names</code> becomes empty</td></tr>
+<tr><td><code>set_inputs_first_pass</code></td><td><strong>keep nearly verbatim, including <code>- num_rejected</code></strong></td></tr>
+<tr><td>non-causal metadata assertion</td><td>keep verbatim</td></tr>
+</table></div>
+
+<p class="measure">Our file should be <em>shorter</em> than DFlash's 317 lines, because every
+deletion removes an entire subsystem.</p>
+
+<div class="trap">
+<p class="label">Drift from the implementation guide</p>
+<p>The guide says to auto-detect Orthrus via <code>model_type == "orthrus"</code>. The real
+config says <code>"model_type": "qwen3"</code> with
+<code>"architectures": ["OrthrusLM"]</code>. Detection must key on the <strong>architecture
+name</strong>.</p>
+</div>
+
+<h2>6.2&ensp;Steps, each with an acceptance test</h2>
+<ol class="measure">
+  <li><strong>Model class.</strong> <code>OrthrusQwen3ForCausalLM</code> with weight loading;
+  the three <code>*_proj_diff</code> fuse into <code>qkv_proj_diff</code> exactly as Qwen3
+  fuses q/k/v. <em>Test:</em> ordinary generation matches stock Qwen3-1.7B, then diffusion-pass
+  logits match the HF reference to bf16 tolerance.</li>
+  <li><strong>Proposer, batch 1, greedy, eager.</strong> <em>Test:</em> the numbers in
+  &sect;6.3.</li>
+  <li><strong>Batch &gt; 1, then sampling.</strong> Per-request <code>seq_lens</code> and
+  <code>query_start_loc</code> must be right with mixed prompt lengths.</li>
+  <li><strong>CUDA graphs and performance.</strong> Turn off <code>enforce_eager</code>;
+  captured shape is <code>B_pad &times; 32</code> query tokens, full depth.</li>
+  <li><strong>Upstream.</strong> RFC first &mdash; see &sect;6.4.</li>
+</ol>
+
+<h2>6.3&ensp;Acceptance criteria</h2>
+<div class="tw"><table>
+<tr><th>Measurement</th><th class="num">Target</th></tr>
+<tr><td>GSM8K TPF, 1.7B, token-weighted, n&ge;100</td><td class="num">&asymp; 3.9</td></tr>
+<tr><td>GSM8K acceptance length, 1.7B</td><td class="num">&asymp; 7.8</td></tr>
+<tr><td>GSM8K TPF, 4B</td><td class="num">&asymp; 5.0</td></tr>
+<tr><td>Lossless, fp32</td><td class="num">100% identical</td></tr>
+<tr><td>Lossless, bf16</td><td class="num">high match rate, near-ties only</td></tr>
+</table></div>
+<p class="measure">Within a few percent is kernel numerics. <strong>A drop beyond ~5% is a
+bug</strong> &mdash; and look at <code>- num_rejected</code> first.</p>
+
+<h2>6.4&ensp;How to pitch it</h2>
+<p class="measure">Measured head-to-head against DFlash on Qwen3-4B, same harness, same 200
+GSM8K questions:</p>
+
+<div class="tw"><table>
+<tr><th>Harness</th><th>Method</th><th class="num">tok/s</th><th class="num">tok/cycle</th></tr>
+<tr><td>HF eager</td><td>Orthrus-4B</td><td class="num">223.7</td><td class="num">9.95</td></tr>
+<tr><td>HF eager</td><td>DFlash-4B</td><td class="num">220.2</td><td class="num">5.90</td></tr>
+<tr><td>vLLM</td><td>AR baseline</td><td class="num">155.7</td><td class="num">&mdash;</td></tr>
+<tr><td>vLLM</td><td>DFlash-4B</td><td class="num">680.4</td><td class="num">5.92</td></tr>
+<tr><td>vLLM</td><td>Orthrus-4B <em>(projected)</em></td><td class="num">~696</td><td class="num">9.95</td></tr>
+</table></div>
+
+<p class="measure">Roughly a tie. Orthrus drafts far better &mdash; 9.95 tokens per cycle
+against 5.90 &mdash; but pays for it with a full-depth draft pass where DFlash pays a fifth
+of one. Measured directly: a DFlash draft pass is 3.20&nbsp;ms against a 21.53&nbsp;ms
+target pass, a ratio of 0.149.</p>
+
+<div class="trap">
+<p class="label">Do not pitch Orthrus on throughput</p>
+<p>The defensible case is <strong>zero extra KV cache</strong> (DFlash carries a second
+cache, ~14% of the target's, growing per request with context length), one checkpoint
+instead of two, and no separate drafter to train or ship. A speed claim may not survive
+review; the memory claim will. And note the tension: Orthrus's memory advantage only pays
+at high concurrency, but its two full-depth passes hurt most there too. Nobody has measured
+which wins &mdash; that is the most valuable experiment still open.</p>
+</div>
+
+<div class="verify">
+<p class="label">Verify</p>
+<pre><code>.venv-ref/bin/python bench/bench_dflash.py --task gsm8k --num-prompts 200 --size 4b
+.venv-ref/bin/python bench/measure_pass_cost.py --num-prompts 10
+.venv/bin/python bench/bench_vllm.py --task gsm8k --num-prompts 200 --size 4b</code></pre>
+</div>
+
+<!-- ============================= APPENDIX ============================= -->
+<div class="part" id="pa"><span class="part-num">APPENDIX</span><span class="part-title">Numbers and commands</span></div>
+
+<h2>A.1&ensp;Every number worth remembering</h2>
+<div class="tw"><table>
+<tr><th>Quantity</th><th class="num">Value</th><th>Source</th></tr>
+<tr><td>Orthrus block size K</td><td class="num">32</td><td><code>config.json</code></td></tr>
+<tr><td><code>num_speculative_tokens</code></td><td class="num">31</td><td>K &minus; 1</td></tr>
+<tr><td><code>mask_token_id</code></td><td class="num">151669</td><td><code>config.json</code></td></tr>
+<tr><td>New parameters</td><td class="num">17.0%</td><td>measured; guide says ~16%</td></tr>
+<tr><td>AR tensors identical to Qwen3</td><td class="num">310 / 310</td><td><code>compare_weights.py</code></td></tr>
+<tr><td>Per-question TPF sd (1.7B)</td><td class="num">1.10</td><td>n=200</td></tr>
+<tr><td>95% CI at n=25</td><td class="num">&plusmn;0.4</td><td>bootstrap</td></tr>
+<tr><td>Eager overhead per layer</td><td class="num">0.47 ms</td><td>decomposition, &sect;3.5</td></tr>
+<tr><td>DFlash draft / target pass</td><td class="num">0.149</td><td>direct timing</td></tr>
+<tr><td>RTX 5090 bandwidth</td><td class="num">~1.79 TB/s</td><td>spec</td></tr>
+</table></div>
+
+<h2>A.2&ensp;Commands</h2>
+<pre><code><span class="cmt"># baseline + both invariants</span>
+.venv-ref/bin/python bench/bench_eager.py --max-new-tokens 256
+
+<span class="cmt"># paper comparison (use >=100 prompts)</span>
+.venv-ref/bin/python bench/bench_eager.py --task gsm8k --num-prompts 200 \
+    --max-new-tokens 512 --only orthrus-diff
+
+<span class="cmt"># 4B</span>
+.venv-ref/bin/python bench/bench_eager.py --task gsm8k --num-prompts 200 \
+    --max-new-tokens 512 --only orthrus-diff --orthrus-model chiennv/Orthrus-Qwen3-4B
+
+<span class="cmt"># strict lossless test &mdash; must be fp32</span>
+.venv-ref/bin/python bench/bench_eager.py --dtype fp32 --only orthrus-ar,orthrus-diff
+
+<span class="cmt"># weights really frozen?</span>
+.venv-ref/bin/python bench/compare_weights.py
+
+<span class="cmt"># DFlash, same harness</span>
+.venv-ref/bin/python bench/bench_dflash.py --task gsm8k --num-prompts 200 --size 4b
+.venv-ref/bin/python bench/measure_pass_cost.py --num-prompts 10
+
+<span class="cmt"># vLLM side (env var is set automatically by the script)</span>
+.venv/bin/python bench/bench_vllm.py --task gsm8k --num-prompts 200 --size 4b</code></pre>
+
+<h2>A.3&ensp;Reading order</h2>
+<ol class="measure">
+  <li><code>ref_peek/modeling_orthrus.py</code> &mdash; lines 107&ndash;182 (attention), 460&ndash;532 (loop)</li>
+  <li><code>vllm/v1/spec_decode/dflash.py</code> &mdash; all 317 lines</li>
+  <li><code>vllm/v1/spec_decode/utils.py:458</code> &mdash; the kernel</li>
+  <li><code>vllm/model_executor/models/qwen3.py</code> &mdash; attention and <code>load_weights</code></li>
+  <li><code>vllm/v1/spec_decode/llm_base_proposer.py</code> &mdash; <code>__init__</code>, <code>propose</code>, <code>load_model</code>, <code>_get_model</code>, <code>set_inputs_first_pass</code>. Skip the rest.</li>
+</ol>
+
+<hr>
+<p style="font-size:.8rem;color:var(--ink-3);font-family:'IBM Plex Sans',sans-serif">
+Every figure measured on this machine, September 2026. Where a published number and a
+measured one disagree, both are shown. vLLM internals move quickly &mdash; if a method name
+here has changed, the role it plays will still exist; grep for the DFlash proposer and
+follow what it does.</p>
+
+</div>
